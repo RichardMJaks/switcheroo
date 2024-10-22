@@ -1,4 +1,7 @@
-extends _BASE_
+extends State
+class_name PlayerState
+
+var player: Player
 
 func enter() -> void:
 	super()
@@ -11,3 +14,5 @@ func update(delta: float) -> void:
 
 func physics_update(delta: float) -> void:
 	pass
+	
+	

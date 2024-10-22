@@ -16,6 +16,7 @@ func _physics_process(delta: float) -> void:
 		Input.get_axis("m_left", "m_right"),
 		Input.get_axis("m_up", "m_down")
 	).normalized()
+	
 
 # We handle mouse input here so GUI elements could consume the input beforehand
 # Buffering is handled by setters of intents

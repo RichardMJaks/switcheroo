@@ -2,9 +2,13 @@ extends Node
 class_name State
 
 var input_handler: InputHandler
+var anim: AnimationPlayer
+@export var animation_name: String
+signal change_state(state: State, new_state: State)
 
 func enter() -> void:
-	pass
+	if anim and animation_name:
+		anim.play(animation_name)
 
 func exit() -> void:
 	pass

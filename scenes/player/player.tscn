@@ -1,26 +1,63 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbw1kt6fxf45b"]
+[gd_scene load_steps=9 format=3 uid="uid://bbw1kt6fxf45b"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xb55a"]
-[ext_resource type="Script" path="res://scripts/utilities/input_handler/player_input_handler.gd" id="2_4i5cn"]
-[ext_resource type="Script" path="res://scripts/utilities/state_machine/finite_state_machine.gd" id="2_4ircb"]
-[ext_resource type="Script" path="res://scripts/utilities/input_handler/input_buffer.gd" id="3_vkd3c"]
+[ext_resource type="Script" path="res://scripts/utilities/state_machine/player/player_state_machine.gd" id="2_0qv4a"]
+[ext_resource type="Script" path="res://scripts/utilities/input_handler/player/player_input_handler.gd" id="2_4i5cn"]
+[ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="3_sng3q"]
+[ext_resource type="Script" path="res://scripts/utilities/input_handler/player/input_buffer.gd" id="3_vkd3c"]
+[ext_resource type="Script" path="res://scenes/player/states/moving.gd" id="4_afssv"]
+
+[sub_resource type="Gradient" id="Gradient_nqa6a"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1wxlt"]
+gradient = SubResource("Gradient_nqa6a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xb55a")
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_1wxlt")
+
+[node name="Sprite" type="Node2D" parent="."]
 unique_name_in_owner = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+[node name="Head" type="Node2D" parent="Sprite"]
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="Torso" type="Node2D" parent="Sprite"]
+
+[node name="MainHand" type="Node2D" parent="Sprite"]
+
+[node name="OffHand" type="Node2D" parent="Sprite"]
+
+[node name="RightLeg" type="Node2D" parent="Sprite"]
+
+[node name="LeftLeg" type="Node2D" parent="Sprite"]
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state", "input_handler")]
 unique_name_in_owner = true
-script = ExtResource("2_4ircb")
+script = ExtResource("2_0qv4a")
+player = NodePath("..")
+initial_state = NodePath("idle")
+input_handler = NodePath("../InputHandler")
+
+[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("moving")]
+script = ExtResource("3_sng3q")
+moving = NodePath("../moving")
+
+[node name="moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle")]
+script = ExtResource("4_afssv")
+idle = NodePath("../idle")
 
 [node name="InputHandler" type="Node" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_4i5cn")
 
 [node name="InputBuffer" type="Node" parent="InputHandler"]
 script = ExtResource("3_vkd3c")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BodyParts" type="Node" parent="."]
