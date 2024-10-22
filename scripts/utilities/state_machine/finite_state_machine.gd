@@ -6,12 +6,17 @@ var states: Dictionary = {}
 var current_state: State
 
 @export var input_handler: InputHandler
+@export var animation_player: AnimationPlayer
 
 func _ready() -> void:
+	if not input_handler:
+		push_warning("Input Handler node is missing! Is this intended?")
+	if not animation_player:
+		push_warning("Animation Player node is missing! Is this intended?")
 	for child in get_children():
 		if child is State:
 			states[child.name] = child
-			
+			child.change_state.connect(_change_state)
 			sync_state_variables(child)
 		
 	if initial_state:
@@ -37,7 +42,6 @@ func _change_state(state: State, new_state: State) -> void:
 		return
 	if state != current_state:
 		push_error("%s is trying to switch to %s while not current_state!" % [state.name, new_state.name])
-	
 	_init_change_state(new_state)
 
 func force_change_state(new_state: String) -> State:
@@ -51,8 +55,6 @@ func force_change_state(new_state: String) -> State:
 		return null
 	
 	return _init_change_state(state)
-
-
 
 # This assumes [param new_state] != null
 func _init_change_state(new_state: State) -> State:
@@ -68,8 +70,9 @@ func _init_change_state(new_state: State) -> State:
 func sync_state_variables(state: State) -> void:
 	if input_handler:
 		state.input_handler = input_handler
-	else:
-		push_warning("Input handler node is missing! Is this intended?")
+	if animation_player:
+		state.anim = animation_player
+		
 	
 
 func parse_string(s: String) -> State:

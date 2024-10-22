@@ -1,7 +1,7 @@
 extends _BASE_
 
 func enter() -> void:
-	pass
+	super()
 
 func exit() -> void:
 	pass
