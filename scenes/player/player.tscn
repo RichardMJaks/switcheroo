@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbw1kt6fxf45b"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xb55a"]
+[ext_resource type="Script" path="res://scripts/utilities/input_handler/player_input_handler.gd" id="2_4i5cn"]
+[ext_resource type="Script" path="res://scripts/utilities/input_handler/input_buffer.gd" id="3_vkd3c"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_xb55a")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+
+[node name="StateMachine" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_4i5cn")
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("2_4i5cn")
+
+[node name="InputBuffer" type="Node" parent="InputHandler"]
+script = ExtResource("3_vkd3c")
