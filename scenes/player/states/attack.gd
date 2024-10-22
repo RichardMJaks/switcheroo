@@ -8,7 +8,9 @@ var combo_buffer_length: int = 3
 var current_buffer_length: int = 0
 
 func enter() -> void:
+	attack_handler.look_at(player.get_global_mouse_position())
 	attack_handler.progress_combo()
+	player.velocity = Vector2.ZERO
 	super()
 
 func exit() -> void:

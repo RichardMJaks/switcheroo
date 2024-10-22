@@ -40,6 +40,7 @@ func progress_combo() -> void:
 		_combo_step += 1
 	
 	previous_step_finished = false
+	_combo_steps[_combo_step].animation_player.speed_scale = StatsUtil.stats.attack_speed
 	_combo_steps[_combo_step].attack()
 
 func reset_combo() -> void:
