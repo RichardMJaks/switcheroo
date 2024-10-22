@@ -4,5 +4,4 @@
 
 [node name="LeftLeg" type="Node"]
 script = ExtResource("1_037dr")
-flat_movement_speed = 100.0
 type = 4

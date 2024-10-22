@@ -1,7 +1,6 @@
 extends Node
 class_name BodyPartsHandler
 
-@onready var stats = Stats.new()
 var body_parts: Dictionary = {
 	Util.BODY_TYPE.HEAD: null,
 	Util.BODY_TYPE.TORSO: null,
@@ -27,7 +26,7 @@ func _physics_process(delta: float) -> void:
 	_recalculate_stats()
 
 func _recalculate_stats():
-	stats.reset_stats()
+	StatsUtil.stats.reset_stats()
 	_get_stats()
 
 func change_body_part(type: Util.BODY_TYPE, new_part: BodyPart) -> void:
@@ -47,5 +46,5 @@ func change_body_part(type: Util.BODY_TYPE, new_part: BodyPart) -> void:
 func _get_stats():
 	for part: BodyPart in body_parts.values():
 		if part:
-			part.modify_stats(stats)
+			part.modify_stats(StatsUtil.stats)
 	

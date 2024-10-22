@@ -8,7 +8,7 @@ func enter() -> void:
 	super()
 
 func exit() -> void:
-	pass
+	super()
 	
 func update(delta: float) -> void:
 	pass
