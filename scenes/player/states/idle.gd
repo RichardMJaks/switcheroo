@@ -10,10 +10,10 @@ func enter() -> void:
 func exit() -> void:
 	pass
 	
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	if input_handler.wants_to_attack:
 		change_state.emit(self, attacking)
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if input_handler.movement_direction:
 		change_state.emit(self, moving)

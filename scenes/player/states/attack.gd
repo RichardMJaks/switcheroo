@@ -1,4 +1,5 @@
 extends PlayerState
+#TODO: Still needs to handle movement during attack stuff
 
 @export var idle: PlayerState
 @export var attack_handler: AttackHandler
@@ -26,10 +27,10 @@ func update(_delta: float) -> void:
 		current_buffer_length += 1
 		return
 	
-	print("progressing combos")
 	current_buffer_length = 0
+	attack_handler.look_at(player.get_global_mouse_position())
 	attack_handler.progress_combo()
 	
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	pass

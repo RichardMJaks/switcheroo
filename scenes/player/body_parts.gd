@@ -22,7 +22,7 @@ func _ready() -> void:
 			body_parts[type] = child
 
 # We need to constantly check stats because body parts can rot
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_recalculate_stats()
 
 func _recalculate_stats():

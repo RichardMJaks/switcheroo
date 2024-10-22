@@ -11,7 +11,7 @@ var wants_to_dash: bool = false: set = _set_dash_intent
 func _ready() -> void:
 	input_buffer.buffer_time = buffer_time
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	movement_direction = Vector2(
 		Input.get_axis("m_left", "m_right"),
 		Input.get_axis("m_up", "m_down")

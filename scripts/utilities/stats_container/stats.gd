@@ -19,7 +19,7 @@ func reset_stats() -> void:
 	flat_movement_speed = StatsUtil.movement_speed
 	movement_speed_multiplier = 1
 	
-	flat_damage = StatsUtil.movement_speed
+	flat_damage = StatsUtil.damage
 	damage_multiplier = 1
 	
 func _recalculate_stats() -> void:

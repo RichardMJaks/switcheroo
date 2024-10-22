@@ -9,6 +9,10 @@ var current_state: State
 @export var animation_player: AnimationPlayer
 
 func _ready() -> void:
+	if not input_handler:
+		push_warning("Input Handler node is missing! Is this intended?")
+	if not animation_player:
+		push_warning("Animation Player node is missing! Is this intended?")
 	for child in get_children():
 		if child is State:
 			states[child.name] = child
@@ -38,7 +42,6 @@ func _change_state(state: State, new_state: State) -> void:
 		return
 	if state != current_state:
 		push_error("%s is trying to switch to %s while not current_state!" % [state.name, new_state.name])
-	clamp
 	_init_change_state(new_state)
 
 func force_change_state(new_state: String) -> State:
@@ -69,8 +72,7 @@ func sync_state_variables(state: State) -> void:
 		state.input_handler = input_handler
 	if animation_player:
 		state.anim = animation_player
-	else:
-		push_warning("Input handler node is missing! Is this intended?")
+		
 	
 
 func parse_string(s: String) -> State:
