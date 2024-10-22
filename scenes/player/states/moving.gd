@@ -12,7 +12,7 @@ func update(delta: float) -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	var ms = player.stats.movement_speed
+	var ms = bp.stats.movement_speed
 	var dir = input_handler.movement_direction
 	
 	if not dir:

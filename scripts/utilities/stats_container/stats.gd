@@ -14,10 +14,14 @@ var damage: float:
 	get():
 		return floori(flat_damage * damage_multiplier)
 
-func _ready() -> void:
-	SignalBus.body_parts_changed.connect(_recalculate_stats)
 
-#TODO: Implement _recalculate_stats (Probably better to let the body parts handle it themselves)
+func reset_stats() -> void:
+	flat_movement_speed = BaseStats.movement_speed
+	movement_speed_multiplier = 1
+	
+	flat_damage = BaseStats.movement_speed
+	damage_multiplier = 1
+	
 func _recalculate_stats() -> void:
 	pass
 	

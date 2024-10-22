@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbw1kt6fxf45b"]
+[gd_scene load_steps=11 format=3 uid="uid://bbw1kt6fxf45b"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xb55a"]
 [ext_resource type="Script" path="res://scripts/utilities/state_machine/player/player_state_machine.gd" id="2_0qv4a"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="3_sng3q"]
 [ext_resource type="Script" path="res://scripts/utilities/input_handler/player/input_buffer.gd" id="3_vkd3c"]
 [ext_resource type="Script" path="res://scenes/player/states/moving.gd" id="4_afssv"]
+[ext_resource type="Script" path="res://scenes/player/body_parts.gd" id="7_2b0aq"]
+[ext_resource type="PackedScene" uid="uid://bqw6p6thudv14" path="res://scenes/player/body_parts/left_leg.tscn" id="8_memrj"]
 
 [sub_resource type="Gradient" id="Gradient_nqa6a"]
 interpolation_mode = 1
@@ -38,10 +40,11 @@ unique_name_in_owner = true
 
 [node name="LeftLeg" type="Node2D" parent="Sprite"]
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state", "input_handler")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "body_parts_handler", "initial_state", "input_handler")]
 unique_name_in_owner = true
 script = ExtResource("2_0qv4a")
 player = NodePath("..")
+body_parts_handler = NodePath("../BodyParts")
 initial_state = NodePath("idle")
 input_handler = NodePath("../InputHandler")
 
@@ -61,3 +64,7 @@ script = ExtResource("2_4i5cn")
 script = ExtResource("3_vkd3c")
 
 [node name="BodyParts" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("7_2b0aq")
+
+[node name="LeftLeg" parent="BodyParts" instance=ExtResource("8_memrj")]
