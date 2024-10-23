@@ -4,12 +4,16 @@ extends PlayerState
 @export var idle: PlayerState
 @export var attack_handler: AttackHandler
 
+@export var attack_animations: Array[String]
+
 var combo_buffer_length: int = 3
 var current_buffer_length: int = 0
 
 func enter() -> void:
 	attack_handler.look_at(player.get_global_mouse_position())
 	attack_handler.progress_combo()
+	if attack_animations.size() > attack_handler._combo_step:
+		anim.play(attack_animations[attack_handler._combo_step])
 	player.velocity = Vector2.ZERO
 	super()
 
@@ -32,6 +36,8 @@ func update(_delta: float) -> void:
 	current_buffer_length = 0
 	attack_handler.look_at(player.get_global_mouse_position())
 	attack_handler.progress_combo()
+	if attack_animations.size() > attack_handler._combo_step:
+		anim.play(attack_animations[attack_handler._combo_step])
 	
 
 func physics_update(_delta: float) -> void:
