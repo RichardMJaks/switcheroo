@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bpj2w5vkghrvv"]
+[gd_scene load_steps=30 format=3 uid="uid://bpj2w5vkghrvv"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xb55a"]
 [ext_resource type="Script" path="res://scripts/utilities/state_machine/player/player_state_machine.gd" id="2_0qv4a"]
@@ -17,13 +17,25 @@
 [ext_resource type="Script" path="res://scripts/utilities/audio_player/audio_player.gd" id="12_eqx8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhrke"]
-size = Vector2(74, 70)
+size = Vector2(8, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1yj2"]
-radius = 54.0093
+radius = 18.2483
 
 [sub_resource type="Animation" id="Animation_pkaw1"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/Collider:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_krmtq"]
 resource_name = "attack"
@@ -40,12 +52,33 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vum3c"]
 _data = {
 "RESET": SubResource("Animation_pkaw1"),
 "attack": SubResource("Animation_krmtq")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2xmh"]
+size = Vector2(36, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jeoif"]
+size = Vector2(36, 17.48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pxj4"]
+size = Vector2(36, 40)
 
 [sub_resource type="Animation" id="Animation_p80sc"]
 resource_name = "attack1"
@@ -157,15 +190,15 @@ monitorable = false
 [node name="Collider" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_e1yj2")
 
-[node name="AttackHandler" type="Node2D" parent="."]
+[node name="AttackHandler" type="Node2D" parent="." node_paths=PackedStringArray("character")]
 unique_name_in_owner = true
 script = ExtResource("2_f74kk")
+character = NodePath("..")
 
 [node name="0" type="Sprite2D" parent="AttackHandler"]
 position = Vector2(26.99, 0)
 texture = ExtResource("3_q4rb6")
 hframes = 5
-frame = 4
 script = ExtResource("3_kmycu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackHandler/0"]
@@ -173,12 +206,22 @@ libraries = {
 "": SubResource("AnimationLibrary_vum3c")
 }
 
+[node name="Hitbox" type="Area2D" parent="AttackHandler/0"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="Collider" type="CollisionShape2D" parent="AttackHandler/0/Hitbox"]
+position = Vector2(-4.99, 1.5)
+shape = SubResource("RectangleShape2D_c2xmh")
+disabled = true
+debug_color = Color(0.984314, 0, 0, 0.419608)
+
 [node name="1" type="Sprite2D" parent="AttackHandler"]
-position = Vector2(26.99, 0)
+position = Vector2(26.99, 3.48)
 texture = ExtResource("3_q4rb6")
 flip_v = true
 hframes = 5
-frame = 4
 script = ExtResource("3_kmycu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackHandler/1"]
@@ -186,19 +229,40 @@ libraries = {
 "": SubResource("AnimationLibrary_vum3c")
 }
 
+[node name="Hitbox" type="Area2D" parent="AttackHandler/1"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="Collider" type="CollisionShape2D" parent="AttackHandler/1/Hitbox"]
+position = Vector2(-4.99, -1.74)
+shape = SubResource("RectangleShape2D_jeoif")
+disabled = true
+debug_color = Color(0.984314, 0, 0, 0.419608)
+
 [node name="2" type="Sprite2D" parent="AttackHandler"]
-position = Vector2(26.99, 0)
+position = Vector2(16.64, -5.29)
 rotation = -1.5708
 texture = ExtResource("3_q4rb6")
 flip_v = true
 hframes = 5
-frame = 4
 script = ExtResource("3_kmycu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackHandler/2"]
 libraries = {
 "": SubResource("AnimationLibrary_vum3c")
 }
+
+[node name="Hitbox" type="Area2D" parent="AttackHandler/2"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="Collider" type="CollisionShape2D" parent="AttackHandler/2/Hitbox"]
+position = Vector2(-4.99, 7.35998)
+shape = SubResource("RectangleShape2D_0pxj4")
+disabled = true
+debug_color = Color(0.984314, 0, 0, 0.419608)
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -240,6 +304,7 @@ script = ExtResource("6_xu6wk")
 idle = NodePath("../idle")
 attack_handler = NodePath("../../AttackHandler")
 attack_animations = Array[String](["attack1", "attack2", "attack3"])
+forward_movement_during_attack = 5.0
 
 [node name="dashing" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle")]
 script = ExtResource("8_eopym")

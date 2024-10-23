@@ -27,4 +27,9 @@ func physics_update(_delta: float) -> void:
 		change_state.emit(self, idle)
 		return
 	
+	if dir.x < 0:
+		player.sprite.flip_h = true
+	if dir.x > 0:
+		player.sprite.flip_h = false
+	
 	player.velocity = dir * ms
