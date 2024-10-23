@@ -1,0 +1,259 @@
+[gd_scene load_steps=27 format=3 uid="uid://dssadce6tbgq6"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1uuw5"]
+[ext_resource type="Script" path="res://scripts/combo_system/attack_handler.gd" id="2_vynnm"]
+[ext_resource type="Script" path="res://scripts/combo_system/attack.gd" id="3_v5nai"]
+[ext_resource type="Script" path="res://scripts/utilities/state_machine/player/player_state_machine.gd" id="4_15f01"]
+[ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="5_b458x"]
+[ext_resource type="Script" path="res://scenes/player/states/moving.gd" id="6_vy36l"]
+[ext_resource type="Script" path="res://scenes/player/states/attack.gd" id="7_6d04r"]
+[ext_resource type="Script" path="res://scenes/player/states/dash.gd" id="8_5m5qt"]
+[ext_resource type="Script" path="res://scripts/utilities/input_handler/player/player_input_handler.gd" id="9_cjo58"]
+[ext_resource type="Script" path="res://scripts/utilities/input_handler/player/input_buffer.gd" id="10_th135"]
+[ext_resource type="Script" path="res://scenes/player/body_parts.gd" id="11_amft8"]
+[ext_resource type="PackedScene" uid="uid://bqw6p6thudv14" path="res://scenes/player/body_parts/left_leg.tscn" id="12_77e74"]
+[ext_resource type="Script" path="res://scripts/utilities/audio_player/audio_player.gd" id="13_orn0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhrke"]
+size = Vector2(74, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e1yj2"]
+radius = 54.0093
+
+[sub_resource type="Animation" id="Animation_pkaw1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label0:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_1rht5"]
+resource_name = "attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label0:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["0", ""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vum3c"]
+_data = {
+"RESET": SubResource("Animation_pkaw1"),
+"attack": SubResource("Animation_1rht5")
+}
+
+[sub_resource type="Animation" id="Animation_nondh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label1:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_w5sjk"]
+resource_name = "attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label1:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["1", "
+"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwqx6"]
+_data = {
+"RESET": SubResource("Animation_nondh"),
+"attack": SubResource("Animation_w5sjk")
+}
+
+[sub_resource type="Animation" id="Animation_1o8y5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
+[sub_resource type="Animation" id="Animation_y3akb"]
+resource_name = "attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label2:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["2", ""]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ttvdr"]
+_data = {
+"RESET": SubResource("Animation_1o8y5"),
+"attack": SubResource("Animation_y3akb")
+}
+
+[sub_resource type="Gradient" id="Gradient_nqa6a"]
+interpolation_mode = 1
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1wxlt"]
+gradient = SubResource("Gradient_nqa6a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_1uuw5")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
+
+[node name="Collider" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_bhrke")
+debug_color = Color(0.995463, 0, 0.20479, 0.42)
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="Collider" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_e1yj2")
+
+[node name="AttackHandler" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_vynnm")
+
+[node name="0" type="Node2D" parent="AttackHandler"]
+script = ExtResource("3_v5nai")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackHandler/0"]
+libraries = {
+"": SubResource("AnimationLibrary_vum3c")
+}
+
+[node name="Label0" type="Label" parent="AttackHandler/0"]
+offset_left = -5.0
+offset_top = -79.0
+offset_right = 35.0
+offset_bottom = -56.0
+
+[node name="1" type="Node2D" parent="AttackHandler"]
+script = ExtResource("3_v5nai")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackHandler/1"]
+libraries = {
+"": SubResource("AnimationLibrary_lwqx6")
+}
+
+[node name="Label1" type="Label" parent="AttackHandler/1"]
+offset_left = -5.0
+offset_top = -79.0
+offset_right = 35.0
+offset_bottom = -56.0
+
+[node name="2" type="Node2D" parent="AttackHandler"]
+script = ExtResource("3_v5nai")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackHandler/2"]
+libraries = {
+"": SubResource("AnimationLibrary_ttvdr")
+}
+
+[node name="Label2" type="Label" parent="AttackHandler/2"]
+offset_left = -5.0
+offset_top = -79.0
+offset_right = 35.0
+offset_bottom = -56.0
+
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = SubResource("GradientTexture2D_1wxlt")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "body_parts_handler", "initial_state", "input_handler")]
+unique_name_in_owner = true
+script = ExtResource("4_15f01")
+player = NodePath("..")
+body_parts_handler = NodePath("../BodyParts")
+initial_state = NodePath("idle")
+input_handler = NodePath("../InputHandler")
+
+[node name="idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("moving", "attacking", "dashing")]
+script = ExtResource("5_b458x")
+moving = NodePath("../moving")
+attacking = NodePath("../attacking")
+dashing = NodePath("../dashing")
+
+[node name="moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle", "attacking", "dashing")]
+script = ExtResource("6_vy36l")
+idle = NodePath("../idle")
+attacking = NodePath("../attacking")
+dashing = NodePath("../dashing")
+
+[node name="attacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle", "attack_handler")]
+script = ExtResource("7_6d04r")
+idle = NodePath("../idle")
+attack_handler = NodePath("../../AttackHandler")
+
+[node name="dashing" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle")]
+script = ExtResource("8_5m5qt")
+idle = NodePath("../idle")
+dash_duration = 0.05
+
+[node name="InputHandler" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_cjo58")
+
+[node name="InputBuffer" type="Node" parent="InputHandler"]
+script = ExtResource("10_th135")
+
+[node name="BodyParts" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_amft8")
+
+[node name="LeftLeg" parent="BodyParts" instance=ExtResource("12_77e74")]
+
+[node name="AudioPlayer" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("13_orn0x")

@@ -18,6 +18,7 @@ func _ready() -> void:
 		if child is Attack:
 			_combo_steps.append(child)
 			child.finished.connect(_finish_step)
+			child.frame = 4
 
 func _finish_step():
 	previous_step_finished = true
@@ -46,3 +47,5 @@ func progress_combo() -> void:
 func reset_combo() -> void:
 	_combo_step = -1
 	previous_step_finished = true
+	for step in _combo_steps:
+		step.frame = 4
