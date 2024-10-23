@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diufjat0kvesa"
-path="res://.godot/imported/meatman.png-b62f3831221b5151ccf63bf1e4088129.ctex"
+uid="uid://c4nn2bqv2vdpj"
+path="res://.godot/imported/skelly.png-9f7c8c684b4289b12484daec9bedaf39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/meatman.png"
-dest_files=["res://.godot/imported/meatman.png-b62f3831221b5151ccf63bf1e4088129.ctex"]
+source_file="res://art/skelly.png"
+dest_files=["res://.godot/imported/skelly.png-9f7c8c684b4289b12484daec9bedaf39.ctex"]
 
 [params]
 
