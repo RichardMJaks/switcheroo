@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh768c5x0lf2a"
-path="res://.godot/imported/necromancer idle_walking.png-4baec4b01583373f611441d12d6b9419.ctex"
+uid="uid://ce2gqy0kd058o"
+path="res://.godot/imported/necromancer idle_walking_attack.png-5e033a8ef3b45efa8034fd7abb25e43a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/necromancer idle_walking.png"
-dest_files=["res://.godot/imported/necromancer idle_walking.png-4baec4b01583373f611441d12d6b9419.ctex"]
+source_file="res://art/necromancer idle_walking_attack.png"
+dest_files=["res://.godot/imported/necromancer idle_walking_attack.png-5e033a8ef3b45efa8034fd7abb25e43a.ctex"]
 
 [params]
 
