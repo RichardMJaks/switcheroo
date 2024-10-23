@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyrrfmtaywy1h"
-path="res://.godot/imported/attack smear frame.png-37f9d05016c6607b693ce3213f13ccb9.ctex"
+uid="uid://c4nn2bqv2vdpj"
+path="res://.godot/imported/skelly.png-9f7c8c684b4289b12484daec9bedaf39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/attack smear frame.png"
-dest_files=["res://.godot/imported/attack smear frame.png-37f9d05016c6607b693ce3213f13ccb9.ctex"]
+source_file="res://art/skelly.png"
+dest_files=["res://.godot/imported/skelly.png-9f7c8c684b4289b12484daec9bedaf39.ctex"]
 
 [params]
 
