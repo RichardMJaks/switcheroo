@@ -55,7 +55,7 @@ func setup_gui():
 	form_container.add_child(generate_text_input_section("Animation Library Name", "[Global]"))
 	form_container.add_child(generate_text_input_section("Animation Name", "STANDING_SOUTH"))
 	
-	form_container.add_child(generate_spin_box_section("Frame Duration", .35, .1))
+	form_container.add_child(generate_spin_box_section("Frame Duration", .35, .05))
 	form_container.add_child(generate_spin_box_section("Row", 1, 1))
 	form_container.add_child(generate_spin_box_section("From (Frames start with 0)", 0, 1))
 	form_container.add_child(generate_spin_box_section("To (Frames start with 0)", 0, 1))

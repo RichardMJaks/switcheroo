@@ -7,6 +7,7 @@ extends PlayerState
 @export var attack_animations: Array[String]
 @export var forward_movement_during_attack: float
 var end_position: Vector2
+var passed_time: float = 0
 
 var combo_buffer_length: int = 3
 var current_buffer_length: int = 0
@@ -60,7 +61,9 @@ func update(_delta: float) -> void:
 
 func physics_update(delta: float) -> void:
 	if attack_handler.previous_step_finished or not end_position:
+		passed_time = 0
 		return
 	
-	var anim_time = 0.3 * StatsUtil.stats.attack_speed
+	var anim_time = 0.1 * StatsUtil.stats.attack_speed
+	passed_time += delta
 	player.global_position = player.global_position.lerp(end_position, 1 / anim_time * delta)

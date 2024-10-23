@@ -37,9 +37,9 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_krmtq"]
+[sub_resource type="Animation" id="Animation_yi34b"]
 resource_name = "attack"
-length = 0.5
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,28 +47,16 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox/Collider:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vum3c"]
 _data = {
 "RESET": SubResource("Animation_pkaw1"),
-"attack": SubResource("Animation_krmtq")
+"attack": SubResource("Animation_yi34b")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2xmh"]
@@ -196,7 +184,7 @@ script = ExtResource("2_f74kk")
 character = NodePath("..")
 
 [node name="0" type="Sprite2D" parent="AttackHandler"]
-position = Vector2(26.99, 0)
+position = Vector2(21.035, 0)
 texture = ExtResource("3_q4rb6")
 hframes = 5
 script = ExtResource("3_kmycu")
@@ -218,7 +206,7 @@ disabled = true
 debug_color = Color(0.984314, 0, 0, 0.419608)
 
 [node name="1" type="Sprite2D" parent="AttackHandler"]
-position = Vector2(26.99, 3.48)
+position = Vector2(21.035, 3.48)
 texture = ExtResource("3_q4rb6")
 flip_v = true
 hframes = 5
@@ -304,7 +292,7 @@ script = ExtResource("6_xu6wk")
 idle = NodePath("../idle")
 attack_handler = NodePath("../../AttackHandler")
 attack_animations = Array[String](["attack1", "attack2", "attack3"])
-forward_movement_during_attack = 5.0
+forward_movement_during_attack = 15.0
 
 [node name="dashing" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle")]
 script = ExtResource("8_eopym")
