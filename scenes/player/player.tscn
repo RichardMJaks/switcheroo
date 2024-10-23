@@ -20,6 +20,21 @@ size = Vector2(74, 70)
 [sub_resource type="CircleShape2D" id="CircleShape2D_e1yj2"]
 radius = 54.0093
 
+[sub_resource type="Animation" id="Animation_pkaw1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label0:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+
 [sub_resource type="Animation" id="Animation_1rht5"]
 resource_name = "attack"
 length = 0.3
@@ -36,12 +51,18 @@ tracks/0/keys = {
 "values": ["0", ""]
 }
 
-[sub_resource type="Animation" id="Animation_pkaw1"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vum3c"]
+_data = {
+"RESET": SubResource("Animation_pkaw1"),
+"attack": SubResource("Animation_1rht5")
+}
+
+[sub_resource type="Animation" id="Animation_nondh"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label0:text")
+tracks/0/path = NodePath("Label1:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -49,12 +70,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [""]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vum3c"]
-_data = {
-"RESET": SubResource("Animation_pkaw1"),
-"attack": SubResource("Animation_1rht5")
 }
 
 [sub_resource type="Animation" id="Animation_w5sjk"]
@@ -74,12 +89,18 @@ tracks/0/keys = {
 "]
 }
 
-[sub_resource type="Animation" id="Animation_nondh"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwqx6"]
+_data = {
+"RESET": SubResource("Animation_nondh"),
+"attack": SubResource("Animation_w5sjk")
+}
+
+[sub_resource type="Animation" id="Animation_1o8y5"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label1:text")
+tracks/0/path = NodePath("Label2:text")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,12 +108,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [""]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lwqx6"]
-_data = {
-"RESET": SubResource("Animation_nondh"),
-"attack": SubResource("Animation_w5sjk")
 }
 
 [sub_resource type="Animation" id="Animation_y3akb"]
@@ -109,21 +124,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": ["2", ""]
-}
-
-[sub_resource type="Animation" id="Animation_1o8y5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label2:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [""]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ttvdr"]
