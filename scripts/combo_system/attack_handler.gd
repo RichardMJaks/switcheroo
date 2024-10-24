@@ -33,10 +33,11 @@ func _finish_step():
 
 func force_cancel_combo() -> void:
 	if not previous_step_finished and _combo_step > -1:
-		_combo_steps[_combo_step].animation_player.stop()
-		
+		call_deferred("_stop_anim")
 	reset_combo()
-	
+
+func _stop_anim() -> void:
+	_combo_steps[_combo_step].animation_player.stop
 
 func progress_combo() -> void:
 	if not previous_step_finished:

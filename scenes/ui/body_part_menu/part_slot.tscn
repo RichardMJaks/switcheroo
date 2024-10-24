@@ -17,7 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_qh86h")
 
-[node name="PartSlotHead" type="TextureRect" parent="."]
+[node name="Box" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

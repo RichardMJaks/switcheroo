@@ -84,6 +84,7 @@ vframes = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 root_node = NodePath("../..")
+callback_mode_method = 1
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
