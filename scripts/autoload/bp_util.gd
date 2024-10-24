@@ -1,11 +1,27 @@
 extends Node
 
+enum STAT {FLAT, MULTIPLIER}
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var equipped_parts = {
+	Util.BODY_TYPE.HEAD: null,
+	Util.BODY_TYPE.TORSO: null,
+	Util.BODY_TYPE.MAINHAND: null,
+	Util.BODY_TYPE.OFFHAND: null,
+	Util.BODY_TYPE.RIGHTLEG: null,
+	Util.BODY_TYPE.LEFTLEG: null,
+}
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func get_stat(part_type: Util.BODY_TYPE, stat: STAT) -> float:
+	var part = equipped_parts[part_type]
+	if not part:
+		if stat == STAT.FLAT:
+			return 0
+		return 1
+	
+	match(stat):
+		STAT.FLAT:
+			return part.flat
+		STAT.MULTIPLIER:
+			return part.multiplier
+	
+	return 0

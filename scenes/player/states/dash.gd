@@ -2,6 +2,7 @@ extends PlayerState
 
 @export var idle: PlayerState
 @export var dash_duration: float
+@export var hurtbox_collider: CollisionShape2D
 var spent_duration: float = 0
 var dir: Vector2
 
@@ -14,8 +15,10 @@ func enter() -> void:
 		dir = Vector2.RIGHT
 		
 	player.velocity = dir * (StatsUtil.dash_length / dash_duration)
+	hurtbox_collider.disabled = true
 
 func exit() -> void:
+	hurtbox_collider.disabled = false
 	spent_duration = 0
 	
 func update(_delta: float) -> void:

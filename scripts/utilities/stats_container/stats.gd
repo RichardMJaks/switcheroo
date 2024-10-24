@@ -1,5 +1,6 @@
 extends Node
 class_name Stats
+## @deprecated not in use anymore
 
 #region Movement Speed
 var flat_movement_speed: float = StatsUtil.movement_speed
@@ -11,6 +12,7 @@ var movement_speed: float:
 #endregion
 
 #region Damage
+@warning_ignore("narrowing_conversion")
 var flat_damage: int = StatsUtil.damage
 var damage_multiplier: float = 1
 var damage: float:
@@ -68,6 +70,7 @@ var current_health: int = max_hp
 
 func reset_stats() -> void:
 	flat_movement_speed = StatsUtil.movement_speed
+	@warning_ignore("narrowing_conversion")
 	movement_speed_multiplier = 1
 	
 	flat_damage = StatsUtil.damage

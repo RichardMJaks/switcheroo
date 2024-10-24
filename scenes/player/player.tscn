@@ -193,9 +193,9 @@ shape = SubResource("RectangleShape2D_bhrke")
 debug_color = Color(0.995463, 0, 0.20479, 0.42)
 
 [node name="PickupArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
+collision_layer = 2
+collision_mask = 0
+monitoring = false
 
 [node name="Collider" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_e1yj2")
@@ -317,10 +317,11 @@ attack_handler = NodePath("../../AttackHandler")
 attack_animations = Array[String](["attack1", "attack2", "attack3"])
 forward_movement_during_attack = 10.0
 
-[node name="dashing" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle")]
+[node name="dashing" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle", "hurtbox_collider")]
 script = ExtResource("8_eopym")
 idle = NodePath("../idle")
 dash_duration = 0.1
+hurtbox_collider = NodePath("../../Hurtbox/Collider")
 
 [node name="InputHandler" type="Node" parent="."]
 unique_name_in_owner = true

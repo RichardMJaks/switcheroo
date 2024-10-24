@@ -11,7 +11,7 @@ func enter() -> void:
 		anim.play(attack_animations[attack_handler._combo_step])
 
 func exit() -> void:
-	pass
+	attack_handler.force_cancel_combo()
 	
 func update(_delta: float) -> void:
 	if not input_handler.wants_to_attack and attack_handler.previous_step_finished:
