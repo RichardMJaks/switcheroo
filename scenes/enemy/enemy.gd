@@ -28,14 +28,14 @@ func _drop_part() -> BodyPartPickable:
 	if not randi_range(1, 10) == 10:
 		return null
 	
-	var part_or_null: PackedScene =\
-		BPPreloads.bodyparts_droppable[type][
-			Util.BODY_TYPE[
-				Util.BODY_TYPE.keys().pick_random()
-			]
-		]	
-	if not part_or_null:
-		return null	
+	#var part_or_null: PackedScene =\
+		#BPPreloads.bodyparts_droppable[type][
+			#Util.BODY_TYPE[
+				#Util.BODY_TYPE.keys().pick_random()
+			#]
+		#]	
+	#if not part_or_null:
+		#return null	
 	
 	var part: BodyPartPickable = BPPreloads.droppable_bodypart.instantiate()
 	part.global_position = global_position

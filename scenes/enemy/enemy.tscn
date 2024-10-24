@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://djtb4rcvx6luq"]
+[gd_scene load_steps=19 format=3 uid="uid://djtb4rcvx6luq"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_6umng"]
 [ext_resource type="Script" path="res://scripts/utilities/state_machine/enemy/enemy_fsm.gd" id="1_bcfqb"]
 [ext_resource type="Texture2D" uid="uid://c4nn2bqv2vdpj" path="res://art/skelly.png" id="2_hblfo"]
 [ext_resource type="Script" path="res://scripts/combo_system/attack_handler.gd" id="3_jwi1v"]
+[ext_resource type="Texture2D" uid="uid://b52j18vmtrjlv" path="res://art/attack_smear_frame_6.png" id="4_8lnp4"]
 [ext_resource type="Script" path="res://scenes/enemy/states/moving.gd" id="5_3mvin"]
+[ext_resource type="Script" path="res://scripts/combo_system/attack.gd" id="5_exrjk"]
 [ext_resource type="Script" path="res://scenes/enemy/states/attacking.gd" id="6_p5el5"]
 [ext_resource type="Script" path="res://scenes/enemy/states/taking_damage.gd" id="7_dal1h"]
 [ext_resource type="Script" path="res://scenes/enemy/states/dying.gd" id="8_ehobb"]
@@ -14,7 +16,63 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lm8ed"]
 size = Vector2(10, 19)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_pol5d"]
+radius = 21.0238
+
+[sub_resource type="Animation" id="Animation_8pup2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/Collider:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nq7vu"]
+resource_name = "attack"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collider:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kc1i8"]
+_data = {
+"RESET": SubResource("Animation_8pup2"),
+"attack": SubResource("Animation_nq7vu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yy7m"]
+size = Vector2(36, 17)
+
 [node name="Enemy" type="CharacterBody2D"]
+process_mode = 1
 script = ExtResource("1_6umng")
 health = 10.0
 
@@ -36,8 +94,37 @@ monitoring = false
 shape = SubResource("RectangleShape2D_lm8ed")
 debug_color = Color(1, 0.505882, 0, 0.419608)
 
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="Collider" type="CollisionShape2D" parent="AttackRange"]
+shape = SubResource("CircleShape2D_pol5d")
+debug_color = Color(0.517184, 0.517184, 0.517184, 0.419608)
+
 [node name="AttackHandler" type="Node2D" parent="."]
 script = ExtResource("3_jwi1v")
+
+[node name="0" type="Sprite2D" parent="AttackHandler"]
+position = Vector2(21.035, 0)
+texture = ExtResource("4_8lnp4")
+hframes = 5
+script = ExtResource("5_exrjk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackHandler/0"]
+libraries = {
+"": SubResource("AnimationLibrary_kc1i8")
+}
+
+[node name="Hitbox" type="Area2D" parent="AttackHandler/0"]
+collision_layer = 0
+monitorable = false
+
+[node name="Collider" type="CollisionShape2D" parent="AttackHandler/0/Hitbox"]
+position = Vector2(-4.99, 1.5)
+shape = SubResource("RectangleShape2D_7yy7m")
+disabled = true
+debug_color = Color(0.984314, 0, 0, 0.419608)
 
 [node name="FSM" type="Node" parent="." node_paths=PackedStringArray("character", "attack_handler", "initial_state", "input_handler", "animation_player")]
 unique_name_in_owner = true
@@ -51,11 +138,11 @@ animation_player = NodePath("../Sprite/AnimationPlayer")
 [node name="moving" type="Node" parent="FSM" node_paths=PackedStringArray("attacking")]
 script = ExtResource("5_3mvin")
 attacking = NodePath("../attacking")
+animation_name = "moving"
 
 [node name="attacking" type="Node" parent="FSM" node_paths=PackedStringArray("moving")]
 script = ExtResource("6_p5el5")
 moving = NodePath("../moving")
-attack_animations = Array[String](["attack"])
 
 [node name="taking_damage" type="Node" parent="FSM" node_paths=PackedStringArray("moving")]
 script = ExtResource("7_dal1h")
@@ -72,3 +159,6 @@ ai = NodePath("AI")
 [node name="AI" type="Node" parent="InputHandler" node_paths=PackedStringArray("character")]
 script = ExtResource("10_peasc")
 character = NodePath("../..")
+
+[connection signal="area_entered" from="AttackRange" to="InputHandler/AI" method="_on_player_enters_attack_range"]
+[connection signal="area_exited" from="AttackRange" to="InputHandler/AI" method="_on_player_leaves_attack_range"]

@@ -23,11 +23,13 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		# Create bodypart object
 		# add it to bodypart menu slot
 		# open up bodypart menu
+		print_debug("Pickup")
 		pass
 	
 	if event.is_action_pressed("a_consume"):
 		# destroy this
 		# add mana
+		print_debug("Consume")
 		pass
 
 func _on_arrive_in_pickup_area(area: Area2D) -> void:

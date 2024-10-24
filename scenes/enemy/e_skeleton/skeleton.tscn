@@ -104,9 +104,6 @@ libraries = {
 [node name="Collider" parent="Hurtbox" index="0"]
 position = Vector2(0, -0.5)
 
-[node name="moving" parent="FSM" index="0"]
-animation_name = "moving"
-
 [node name="taking_damage" parent="FSM" index="2"]
 animation_name = "taking_damage"
 

@@ -5,6 +5,7 @@ extends EnemyState
 
 func enter() -> void:
 	super()
+	character.velocity = Vector2.ZERO
 	attack_handler.look_at(player.position)
 	attack_handler.progress_combo()
 	if attack_animations.size() > attack_handler._combo_step:

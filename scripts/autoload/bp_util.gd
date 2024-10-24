@@ -11,12 +11,16 @@ var equipped_parts = {
 	Util.BODY_TYPE.LEFTLEG: null,
 }
 
+func _ready() -> void:
+	SignalBus.body_part_added.connect(_set_part)
+
+func _set_part(type: Util.BODY_TYPE, part: BodyPart) -> void:
+	equipped_parts[type] = part
+
 func get_stat(part_type: Util.BODY_TYPE, stat: STAT) -> float:
 	var part = equipped_parts[part_type]
 	if not part:
-		if stat == STAT.FLAT:
-			return 0
-		return 1
+		return 0
 	
 	match(stat):
 		STAT.FLAT:

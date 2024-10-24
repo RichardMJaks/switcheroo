@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://d275u6f5gikmo"]
+
+[ext_resource type="Texture2D" uid="uid://b0ko6xhleueqh" path="res://art/ruut.png" id="1_3petg"]
+[ext_resource type="Script" path="res://scenes/ui/body_part_menu/body_part_slot.gd" id="2_qh86h"]
+
+[node name="PartSlot" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -528.0
+offset_bottom = -276.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_qh86h")
+
+[node name="PartSlotHead" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_3petg")
+
+[node name="Holder" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

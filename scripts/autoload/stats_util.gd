@@ -17,7 +17,7 @@ var damage: float:
 	get():
 		var type = Util.BODY_TYPE.MAINHAND
 		var flat = BPUtil.get_stat(type, BPUtil.STAT.FLAT)
-		var multiplier = BPUtil.get_stat(type, BPUtil.STAT.MULTIPLIER)
+		var multiplier = 1 + BPUtil.get_stat(type, BPUtil.STAT.MULTIPLIER)
 		return floori((_base_damage + flat) * multiplier)
 
 #endregion
@@ -28,7 +28,7 @@ var vision_range: float:
 	get():
 		var type = Util.BODY_TYPE.HEAD
 		var flat = BPUtil.get_stat(type, BPUtil.STAT.FLAT)
-		var multiplier = BPUtil.get_stat(type, BPUtil.STAT.MULTIPLIER)
+		var multiplier = 1 + BPUtil.get_stat(type, BPUtil.STAT.MULTIPLIER)
 		return (_base_vision_range + flat) * multiplier
 
 #endregion
@@ -39,7 +39,7 @@ var attack_speed: float:
 	get():
 		var type = Util.BODY_TYPE.OFFHAND
 		var flat = BPUtil.get_stat(type, BPUtil.STAT.FLAT)
-		var multiplier = BPUtil.get_stat(type, BPUtil.STAT.MULTIPLIER)
+		var multiplier = 1 + BPUtil.get_stat(type, BPUtil.STAT.MULTIPLIER)
 		return (_base_attack_speed + flat) * multiplier
 
 #endregion
@@ -50,7 +50,7 @@ var max_hp: int:
 	get():
 		var type = Util.BODY_TYPE.TORSO
 		var flat = BPUtil.get_stat(type, BPUtil.STAT.FLAT)
-		var multiplier = BPUtil.get_stat(type, BPUtil.STAT.MULTIPLIER)
+		var multiplier = 1 + BPUtil.get_stat(type, BPUtil.STAT.MULTIPLIER)
 		return floori((_base_max_hp + flat) * multiplier)
 		
 #endregion
@@ -59,7 +59,7 @@ var max_hp: int:
 var _base_dash_length: float = 50
 var dash_length: float:
 	get():
-		var flat = BPUtil.get_stat(Util.BODY_TYPE.RIGHTLEG, BPUtil.STAT.FLAT)
+		var flat = 1 + BPUtil.get_stat(Util.BODY_TYPE.RIGHTLEG, BPUtil.STAT.FLAT)
 		return (_base_dash_length + flat)
 		
 #endregion
@@ -68,7 +68,7 @@ var dash_length: float:
 var _base_dash_cd: float = 1
 var dash_cd: float:
 	get():
-		var multiplier = BPUtil.get_stat(Util.BODY_TYPE.RIGHTLEG, BPUtil.STAT.MULTIPLIER)
+		var multiplier = 1 + BPUtil.get_stat(Util.BODY_TYPE.RIGHTLEG, BPUtil.STAT.MULTIPLIER)
 		return _base_dash_cd * multiplier
 
 #endregion

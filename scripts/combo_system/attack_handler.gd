@@ -20,9 +20,8 @@ func _ready() -> void:
 		if child is Attack:
 			_combo_steps.append(child)
 			child.finished.connect(_finish_step)
-			#HACK: I cant be bothered
-			if owner is Player:
-				child.frame = 4
+			#HACK: needs to be reworked if we doin it further
+			child.frame = 4
 			child.get_node("Hitbox")\
 				.area_entered.connect(
 					deal_damage.bind(child.damage_multiplier)
