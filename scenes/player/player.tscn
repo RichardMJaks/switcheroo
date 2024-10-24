@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bpj2w5vkghrvv"]
+[gd_scene load_steps=31 format=3 uid="uid://bpj2w5vkghrvv"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xb55a"]
 [ext_resource type="Script" path="res://scripts/utilities/state_machine/player/player_state_machine.gd" id="2_0qv4a"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/attack.gd" id="6_xu6wk"]
 [ext_resource type="Script" path="res://scenes/player/states/dash.gd" id="8_eopym"]
 [ext_resource type="Script" path="res://scripts/utilities/audio_player/audio_player.gd" id="12_eqx8t"]
+[ext_resource type="Script" path="res://scenes/player/vision_range.gd" id="14_fnngd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhrke"]
 size = Vector2(8, 10)
@@ -169,6 +170,17 @@ _data = {
 "moving": SubResource("Animation_cmpvj")
 }
 
+[sub_resource type="Gradient" id="Gradient_1ki1r"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.844156, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kwv5e"]
+gradient = SubResource("Gradient_1ki1r")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xb55a")
 
@@ -308,7 +320,7 @@ forward_movement_during_attack = 10.0
 [node name="dashing" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle")]
 script = ExtResource("8_eopym")
 idle = NodePath("../idle")
-dash_duration = 0.05
+dash_duration = 0.1
 
 [node name="InputHandler" type="Node" parent="."]
 unique_name_in_owner = true
@@ -321,3 +333,9 @@ script = ExtResource("3_vkd3c")
 [node name="AudioPlayer" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("12_eqx8t")
+
+[node name="VisionRange" type="PointLight2D" parent="."]
+texture_filter = 1
+blend_mode = 2
+texture = SubResource("GradientTexture2D_kwv5e")
+script = ExtResource("14_fnngd")

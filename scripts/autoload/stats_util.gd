@@ -21,7 +21,7 @@ var damage: float:
 #endregion
 
 #region Vision Range
-var _base_vision_range: float = 100
+var _base_vision_range: float = 10
 var flat_vision_range: float = 0
 var vision_range_multiplier: float = 1
 var vision_range: float:
@@ -51,7 +51,7 @@ var max_hp: int:
 #endregion
 
 #region Dash Length
-var _base_dash_length: float = 100
+var _base_dash_length: float = 50
 var flat_dash_length: float = 0
 var dash_length_multiplier: float = 1
 var dash_length: float:
