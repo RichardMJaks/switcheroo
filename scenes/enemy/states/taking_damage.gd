@@ -9,6 +9,7 @@ func enter() -> void:
 	super()
 	passed_time = 0
 	end_position = character.global_position + character.last_knockback_dir * knockback_amount
+	character.velocity = Vector2.ZERO
 
 func exit() -> void:
 	pass

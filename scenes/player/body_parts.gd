@@ -1,13 +1,13 @@
 extends Node
 class_name BodyPartsHandler
 
-var body_parts: Dictionary = {
-	Util.BODY_TYPE.HEAD: null,
-	Util.BODY_TYPE.TORSO: null,
-	Util.BODY_TYPE.MAINHAND: null,
-	Util.BODY_TYPE.OFFHAND: null,
-	Util.BODY_TYPE.LEFTLEG: null,
-	Util.BODY_TYPE.RIGHTLEG: null,
+@onready var body_parts: Dictionary = {
+	Util.BODY_TYPE.HEAD: $Head,
+	Util.BODY_TYPE.TORSO: $Torso,
+	Util.BODY_TYPE.MAINHAND: $MainHand,
+	Util.BODY_TYPE.OFFHAND: $"OffHand",
+	Util.BODY_TYPE.LEFTLEG: $LeftLeg,
+	Util.BODY_TYPE.RIGHTLEG: $RightLeg,
 }
 
 # Called when the node enters the scene tree for the first time.
@@ -26,7 +26,7 @@ func _physics_process(_delta: float) -> void:
 	_recalculate_stats()
 
 func _recalculate_stats():
-	StatsUtil.stats.reset_stats()
+	StatsUtil.stats.resedt_stats()
 	_get_stats()
 
 func change_body_part(type: Util.BODY_TYPE, new_part: BodyPart) -> void:

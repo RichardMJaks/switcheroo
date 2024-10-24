@@ -63,6 +63,6 @@ func physics_update(delta: float) -> void:
 		passed_time = 0
 		return
 	
-	var anim_time = 0.1 * StatsUtil.stats.attack_speed
+	var anim_time = 0.1 * StatsUtil.attack_speed
 	passed_time += delta
 	player.global_position = player.global_position.lerp(end_position, 1 / anim_time * delta)

@@ -17,4 +17,4 @@ func physics_update(_delta: float) -> void:
 	if not dir:
 		character.velocity = Vector2.ZERO
 	
-	character.velocity = dir * character.velocity
+	character.velocity = dir * character.speed

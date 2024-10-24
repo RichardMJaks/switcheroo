@@ -11,6 +11,8 @@ var _combo_steps: Array[Attack] = []
 
 var previous_step_finished: bool = true
 
+var hit_enemies: Array[Area2D] = []
+
 signal combo_step_finished(step: int)
 
 func _ready() -> void:
@@ -41,13 +43,15 @@ func progress_combo() -> void:
 	if not previous_step_finished:
 		return
 	
+	hit_enemies = []
+	
 	_combo_step += 1
 	if not _combo_step < _total_combo_steps:
 		reset_combo()
 		_combo_step += 1
 	
 	previous_step_finished = false
-	_combo_steps[_combo_step].animation_player.speed_scale = StatsUtil.stats.attack_speed
+	_combo_steps[_combo_step].animation_player.speed_scale = StatsUtil.attack_speed
 	_combo_steps[_combo_step].attack()
 
 func reset_combo() -> void:
@@ -57,5 +61,8 @@ func reset_combo() -> void:
 		step.frame = 4
 		
 func deal_damage(area: Area2D, multiplier: float) -> void:
-	var damage : int = floori(StatsUtil.stats.damage * multiplier)
+	if area in hit_enemies:
+		return
+	hit_enemies.append(area)
+	var damage : int = floori(StatsUtil.damage * multiplier)
 	area.owner.take_damage(damage, Vector2.from_angle(rotation))

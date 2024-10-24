@@ -13,7 +13,7 @@ func enter() -> void:
 	if not dir:
 		dir = Vector2.RIGHT
 		
-	player.velocity = dir * (StatsUtil.stats.dash_length / dash_duration)
+	player.velocity = dir * (StatsUtil.dash_length / dash_duration)
 
 func exit() -> void:
 	spent_duration = 0

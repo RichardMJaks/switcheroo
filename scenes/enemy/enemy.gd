@@ -27,8 +27,8 @@ func take_damage(amount: int, dir: Vector2) -> void:
 		health -= amount
 		return
 	
-	fsm.force_change_state("taking_damage")
 	last_knockback_dir = dir
+	fsm.force_change_state("taking_damage")
 	health -= amount
 
 func _physics_process(_delta: float) -> void:

@@ -93,13 +93,16 @@ _data = {
 speed = 30.0
 
 [node name="Sprite" parent="." index="0"]
-frame = 18
+frame = 8
 
 [node name="AnimationPlayer" parent="Sprite" index="0"]
 root_node = NodePath("..")
 libraries = {
 "": SubResource("AnimationLibrary_3jvj0")
 }
+
+[node name="Collider" parent="Hurtbox" index="0"]
+position = Vector2(0, -0.5)
 
 [node name="moving" parent="FSM" index="0"]
 animation_name = "moving"

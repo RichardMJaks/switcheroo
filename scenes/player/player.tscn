@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bpj2w5vkghrvv"]
+[gd_scene load_steps=28 format=3 uid="uid://bpj2w5vkghrvv"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xb55a"]
 [ext_resource type="Script" path="res://scripts/utilities/state_machine/player/player_state_machine.gd" id="2_0qv4a"]
@@ -11,9 +11,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/moving.gd" id="4_afssv"]
 [ext_resource type="Texture2D" uid="uid://dbjik1v3bme2" path="res://art/necromancer idle_walking_attack.png" id="4_ypow4"]
 [ext_resource type="Script" path="res://scenes/player/states/attack.gd" id="6_xu6wk"]
-[ext_resource type="Script" path="res://scenes/player/body_parts.gd" id="7_2b0aq"]
 [ext_resource type="Script" path="res://scenes/player/states/dash.gd" id="8_eopym"]
-[ext_resource type="PackedScene" uid="uid://bqw6p6thudv14" path="res://scenes/player/body_parts/left_leg.tscn" id="8_memrj"]
 [ext_resource type="Script" path="res://scripts/utilities/audio_player/audio_player.gd" id="12_eqx8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhrke"]
@@ -199,7 +197,6 @@ character = NodePath("..")
 position = Vector2(21.035, 0)
 texture = ExtResource("3_q4rb6")
 hframes = 5
-frame = 4
 script = ExtResource("3_kmycu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AttackHandler/0"]
@@ -282,7 +279,7 @@ libraries = {
 unique_name_in_owner = true
 script = ExtResource("2_0qv4a")
 player = NodePath("..")
-body_parts_handler = NodePath("../BodyParts")
+body_parts_handler = NodePath("")
 initial_state = NodePath("idle")
 input_handler = NodePath("../InputHandler")
 animation_player = NodePath("../Sprite/AnimationPlayer")
@@ -306,7 +303,7 @@ script = ExtResource("6_xu6wk")
 idle = NodePath("../idle")
 attack_handler = NodePath("../../AttackHandler")
 attack_animations = Array[String](["attack1", "attack2", "attack3"])
-forward_movement_during_attack = 15.0
+forward_movement_during_attack = 10.0
 
 [node name="dashing" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle")]
 script = ExtResource("8_eopym")
@@ -316,16 +313,10 @@ dash_duration = 0.05
 [node name="InputHandler" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_4i5cn")
-buffer_time = 10
+buffer_time = 40
 
 [node name="InputBuffer" type="Node" parent="InputHandler"]
 script = ExtResource("3_vkd3c")
-
-[node name="BodyParts" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("7_2b0aq")
-
-[node name="LeftLeg" parent="BodyParts" instance=ExtResource("8_memrj")]
 
 [node name="AudioPlayer" type="Node" parent="."]
 unique_name_in_owner = true

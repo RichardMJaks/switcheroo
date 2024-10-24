@@ -4,6 +4,7 @@ extends EnemyState
 
 func enter() -> void:
 	super()
+	character.velocity = Vector2.ZERO
 	if character.bodypart:
 		var part = character.bodypart
 		get_tree().current_scene.add_child(part)

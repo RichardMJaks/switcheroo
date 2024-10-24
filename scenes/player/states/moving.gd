@@ -20,7 +20,7 @@ func update(_delta: float) -> void:
 		change_state.emit(self, dashing)
 
 func physics_update(_delta: float) -> void:
-	var ms = StatsUtil.stats.movement_speed
+	var ms = StatsUtil.movement_speed
 	var dir = input_handler.movement_direction
 	
 	if not dir:

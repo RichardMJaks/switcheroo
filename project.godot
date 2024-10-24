@@ -13,7 +13,7 @@ config_version=5
 config/name="Switcheroo"
 run/main_scene="res://scenes/enemy/enemy.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-run/max_fps=30
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
@@ -22,6 +22,7 @@ Global="*res://scripts/autoload/global.gd"
 StatsUtil="*res://scripts/autoload/stats_util.gd"
 Util="*res://scripts/autoload/util.gd"
 SignalBus="*res://scripts/autoload/signal_bus.gd"
+BPPreloads="*res://scripts/autoload/bp_preloads.gd"
 
 [display]
 

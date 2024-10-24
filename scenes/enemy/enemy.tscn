@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://djtb4rcvx6luq"]
+[gd_scene load_steps=12 format=3 uid="uid://djtb4rcvx6luq"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_6umng"]
 [ext_resource type="Script" path="res://scripts/utilities/state_machine/enemy/enemy_fsm.gd" id="1_bcfqb"]
@@ -9,8 +9,10 @@
 [ext_resource type="Script" path="res://scenes/enemy/states/taking_damage.gd" id="7_dal1h"]
 [ext_resource type="Script" path="res://scenes/enemy/states/dying.gd" id="8_ehobb"]
 [ext_resource type="Script" path="res://scripts/utilities/input_handler/enemy/enemy_input_handler.gd" id="9_lirj2"]
+[ext_resource type="Script" path="res://scenes/enemy/follower_ai.gd" id="10_peasc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lm8ed"]
+size = Vector2(10, 19)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_6umng")
@@ -58,11 +60,15 @@ attack_animations = Array[String](["attack"])
 [node name="taking_damage" type="Node" parent="FSM" node_paths=PackedStringArray("moving")]
 script = ExtResource("7_dal1h")
 moving = NodePath("../moving")
+knockback_amount = 25.0
 
 [node name="dying" type="Node" parent="FSM"]
 script = ExtResource("8_ehobb")
 
-[node name="InputHandler" type="Node" parent="."]
+[node name="InputHandler" type="Node" parent="." node_paths=PackedStringArray("ai")]
 script = ExtResource("9_lirj2")
+ai = NodePath("AI")
 
-[node name="AI" type="Node" parent="InputHandler"]
+[node name="AI" type="Node" parent="InputHandler" node_paths=PackedStringArray("character")]
+script = ExtResource("10_peasc")
+character = NodePath("../..")
