@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Switcheroo"
-run/main_scene="res://scenes/player/backups/player.tscn"
+run/main_scene="res://scenes/enemy/enemy.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=30
 config/icon="res://icon.svg"
@@ -31,6 +31,18 @@ window/vsync/vsync_mode=0
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/GenerateAnimationPlayerFrameTracks/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://art/": "orange",
+"res://assets/": "gray",
+"res://scenes/": "blue",
+"res://script_templates/": "gray",
+"res://scripts/": "purple",
+"res://sfx/": "yellow"
+}
 
 [input]
 

@@ -58,4 +58,4 @@ func reset_combo() -> void:
 		
 func deal_damage(area: Area2D, multiplier: float) -> void:
 	var damage : int = floori(StatsUtil.stats.damage * multiplier)
-	area.owner.take_damage(damage)
+	area.owner.take_damage(damage, Vector2.from_angle(rotation))

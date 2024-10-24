@@ -1,0 +1,111 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfpiivi2lnsep"]
+
+[ext_resource type="PackedScene" uid="uid://djtb4rcvx6luq" path="res://scenes/enemy/enemy.tscn" id="1_2lhfa"]
+
+[sub_resource type="Animation" id="Animation_8ijs2"]
+resource_name = "moving"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_fef45"]
+resource_name = "attack"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 8]
+}
+
+[sub_resource type="Animation" id="Animation_krm4a"]
+resource_name = "taking_damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 12]
+}
+
+[sub_resource type="Animation" id="Animation_in26u"]
+resource_name = "die"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [16, 17, 18]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%Sprite/..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3jvj0"]
+_data = {
+"attack": SubResource("Animation_fef45"),
+"die": SubResource("Animation_in26u"),
+"moving": SubResource("Animation_8ijs2"),
+"taking_damage": SubResource("Animation_krm4a")
+}
+
+[node name="Skeleton" instance=ExtResource("1_2lhfa")]
+speed = 30.0
+
+[node name="Sprite" parent="." index="0"]
+frame = 18
+
+[node name="AnimationPlayer" parent="Sprite" index="0"]
+root_node = NodePath("..")
+libraries = {
+"": SubResource("AnimationLibrary_3jvj0")
+}
+
+[node name="moving" parent="FSM" index="0"]
+animation_name = "moving"
+
+[node name="taking_damage" parent="FSM" index="2"]
+animation_name = "taking_damage"
+
+[node name="dying" parent="FSM" index="3"]
+animation_name = "die"

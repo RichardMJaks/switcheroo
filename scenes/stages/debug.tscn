@@ -1,12 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://q4ljl267011s"]
 
 [ext_resource type="PackedScene" uid="uid://bpj2w5vkghrvv" path="res://scenes/player/player.tscn" id="1_cx2am"]
-[ext_resource type="PackedScene" uid="uid://djtb4rcvx6luq" path="res://scenes/enemy/enemy.tscn" id="2_mc8c5"]
+[ext_resource type="PackedScene" uid="uid://dfpiivi2lnsep" path="res://scenes/enemy/e_skeleton/skeleton.tscn" id="2_icwrr"]
 
 [node name="Debug" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_cx2am")]
 position = Vector2(288, 250)
 
-[node name="Enemy" parent="." instance=ExtResource("2_mc8c5")]
-position = Vector2(427, 217)
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(384, 232)
+zoom = Vector2(3.235, 3.235)
+
+[node name="Skeleton" parent="." instance=ExtResource("2_icwrr")]
+position = Vector2(393, 256)
