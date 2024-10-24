@@ -9,9 +9,9 @@ func _ready() -> void:
 		if child is AudioStreamPlayer:
 			audio_clips[child.name] = child
 
-func play(name: String) -> void:
-	if not audio_clips.has(name):
-		push_error("Clip %s does not exist" % name)
+func play(clip_name: String) -> void:
+	if not audio_clips.has(clip_name):
+		push_error("Clip %s does not exist" % clip_name)
 		return
 	
-	audio_clips[name].play()
+	audio_clips[clip_name].play()

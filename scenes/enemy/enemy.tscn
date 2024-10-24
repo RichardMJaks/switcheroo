@@ -1,8 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://djtb4rcvx6luq"]
+[gd_scene load_steps=11 format=3 uid="uid://djtb4rcvx6luq"]
 
-[ext_resource type="Script" path="res://scripts/utilities/state_machine/finite_state_machine.gd" id="1_rwwlr"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_6umng"]
+[ext_resource type="Script" path="res://scripts/utilities/state_machine/enemy/enemy_fsm.gd" id="1_bcfqb"]
+[ext_resource type="Texture2D" uid="uid://c4nn2bqv2vdpj" path="res://art/skelly.png" id="2_hblfo"]
+[ext_resource type="Script" path="res://scripts/combo_system/attack_handler.gd" id="3_jwi1v"]
+[ext_resource type="Script" path="res://scenes/enemy/states/moving.gd" id="5_3mvin"]
+[ext_resource type="Script" path="res://scenes/enemy/states/attacking.gd" id="6_p5el5"]
+[ext_resource type="Script" path="res://scenes/enemy/states/taking_damage.gd" id="7_dal1h"]
+[ext_resource type="Script" path="res://scenes/enemy/states/dying.gd" id="8_ehobb"]
+[ext_resource type="Script" path="res://scripts/utilities/input_handler/enemy/enemy_input_handler.gd" id="9_lirj2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lm8ed"]
 
 [node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_6umng")
 
-[node name="FSM" type="Node" parent="."]
-script = ExtResource("1_rwwlr")
+[node name="Sprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_hblfo")
+hframes = 4
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+root_node = NodePath("../..")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="Collider" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_lm8ed")
+debug_color = Color(1, 0.505882, 0, 0.419608)
+
+[node name="AttackHandler" type="Node2D" parent="."]
+script = ExtResource("3_jwi1v")
+
+[node name="FSM" type="Node" parent="." node_paths=PackedStringArray("character", "attack_handler", "initial_state", "input_handler", "animation_player")]
+unique_name_in_owner = true
+script = ExtResource("1_bcfqb")
+character = NodePath("..")
+attack_handler = NodePath("../AttackHandler")
+initial_state = NodePath("moving")
+input_handler = NodePath("../InputHandler")
+animation_player = NodePath("../Sprite/AnimationPlayer")
+
+[node name="moving" type="Node" parent="FSM"]
+script = ExtResource("5_3mvin")
+
+[node name="attacking" type="Node" parent="FSM"]
+script = ExtResource("6_p5el5")
+
+[node name="taking_damage" type="Node" parent="FSM" node_paths=PackedStringArray("moving")]
+script = ExtResource("7_dal1h")
+moving = NodePath("../moving")
+
+[node name="dying" type="Node" parent="FSM"]
+script = ExtResource("8_ehobb")
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource("9_lirj2")
+
+[node name="AI" type="Node" parent="InputHandler"]

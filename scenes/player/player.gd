@@ -6,6 +6,13 @@ class_name Player
 @onready var body_parts: BodyPartsHandler = %BodyParts
 @onready var stats: Stats = StatsUtil.stats
 
+func _ready() -> void:
+	Global.player = self
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
+	
+func take_damage(amount: int) -> void:
+	state_machine.force_change_state("taking_damage")
+	StatsUtil.stats.current_health -= amount
+	

@@ -1,5 +1,4 @@
 extends PlayerState
-#TODO: Still needs to handle movement during attack stuff
 
 @export var idle: PlayerState
 @export var attack_handler: AttackHandler

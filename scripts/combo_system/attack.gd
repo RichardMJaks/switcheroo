@@ -3,6 +3,7 @@ class_name Attack
 
 signal finished
 @onready var animation_player: AnimationPlayer = get_node_or_null("AnimationPlayer")
+@export var damage_multiplier: float = 1
 
 func _ready() -> void:
 	if animation_player:

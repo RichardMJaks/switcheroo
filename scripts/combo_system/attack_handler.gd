@@ -18,7 +18,13 @@ func _ready() -> void:
 		if child is Attack:
 			_combo_steps.append(child)
 			child.finished.connect(_finish_step)
-			child.frame = 4
+			#HACK: I cant be bothered
+			if owner is Player:
+				child.frame = 4
+			child.get_node("Hitbox")\
+				.area_entered.connect(
+					deal_damage.bind(child.damage_multiplier)
+				)
 
 func _finish_step():
 	previous_step_finished = true
@@ -49,3 +55,7 @@ func reset_combo() -> void:
 	previous_step_finished = true
 	for step in _combo_steps:
 		step.frame = 4
+		
+func deal_damage(area: Area2D, multiplier: float) -> void:
+	var damage : int = floori(StatsUtil.stats.damage * multiplier)
+	area.owner.take_damage(damage)

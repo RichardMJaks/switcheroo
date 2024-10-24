@@ -38,11 +38,11 @@ var attack_speed: float:
 #endregion
 
 #region Max HP
-var flat_max_hp: float = StatsUtil.max_hp
+var flat_max_hp: int = StatsUtil.max_hp
 var max_hp_multiplier: float = 1
-var max_hp: float:
+var max_hp: int:
 	get():
-		return flat_max_hp * max_hp_multiplier
+		return floori(flat_max_hp * max_hp_multiplier)
 		
 #endregion
 
@@ -63,6 +63,8 @@ var dash_cd: float:
 		return flat_dash_cd * dash_cd_multiplier
 
 #endregion
+
+var current_health: int = max_hp
 
 func reset_stats() -> void:
 	flat_movement_speed = StatsUtil.movement_speed

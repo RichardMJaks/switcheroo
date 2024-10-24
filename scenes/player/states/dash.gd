@@ -18,7 +18,7 @@ func enter() -> void:
 func exit() -> void:
 	spent_duration = 0
 	
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	pass
 
 func physics_update(delta: float) -> void:
