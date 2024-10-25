@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dv3dncvil2mrs" path="res://resources/bodyparts/skeleton/leg.tres" id="2_blhqu"]
 
 [node name="SkeletonLeftLeg" instance=ExtResource("1_b6lke")]
+multiplier = 0.8
 type = 4
 
 [node name="BodyPart" parent="." index="0"]

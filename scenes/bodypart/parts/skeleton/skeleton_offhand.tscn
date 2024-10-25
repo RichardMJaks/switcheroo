@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b3wrukf2u6ksn" path="res://resources/bodyparts/skeleton/hand.tres" id="2_7ua57"]
 
 [node name="SkeletonOffHand" instance=ExtResource("1_bvx1u")]
+multiplier = 1.0
 type = 3
 
 [node name="BodyPart" parent="." index="0"]

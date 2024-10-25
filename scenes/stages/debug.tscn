@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://q4ljl267011s"]
+[gd_scene load_steps=9 format=4 uid="uid://q4ljl267011s"]
 
 [ext_resource type="PackedScene" uid="uid://bpj2w5vkghrvv" path="res://scenes/player/player.tscn" id="1_cx2am"]
 [ext_resource type="Texture2D" uid="uid://dy6e52dd2x2pq" path="res://art/necromancy map.png" id="1_xrjbw"]
 [ext_resource type="Script" path="res://scripts/utilities/smooth_camera/smooth_camera.gd" id="2_rionj"]
 [ext_resource type="PackedScene" uid="uid://divnta64wru2b" path="res://scenes/ui/body_part_menu/bodypartmenu.tscn" id="5_fxkip"]
+[ext_resource type="PackedScene" uid="uid://b50s6gwhjs7nd" path="res://scenes/enemy_director/enemy_director.tscn" id="6_0uohx"]
 [ext_resource type="PackedScene" uid="uid://d00rxh20g6ex6" path="res://scenes/enemy/e_zombie/zombie.tscn" id="7_m01s2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kloxr"]
@@ -55,3 +56,5 @@ collision_layer = 1
 collision_mask = 1
 
 [node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="EnemyDirector" parent="." instance=ExtResource("6_0uohx")]

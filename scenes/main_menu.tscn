@@ -30,10 +30,20 @@ text = "PLAY"
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "WASD - Movement
-Q - Consume pickupable
+Q - Consume pickupable (gain mana)
 E - Pick up
 LMB - Attack
-Space - Dash"
+Space - Dash
+Necromance to heal (consumes full mana bar)
+
+Head increases vision
+right hands increase damage
+left hands increase attack speed
+torsos increase hp
+right legs increase dash
+left legs increase speed
+
+different types of parts increase by different amounts"
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_fhv15")

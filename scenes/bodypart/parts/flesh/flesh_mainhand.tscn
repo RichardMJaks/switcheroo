@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7t4rk2ffm0pb" path="res://resources/bodyparts/flesh/hand.tres" id="2_mnu2k"]
 
 [node name="FleshMainHand" instance=ExtResource("1_rr3pg")]
+flat = 3.0
 type = 2
 category = 1
 

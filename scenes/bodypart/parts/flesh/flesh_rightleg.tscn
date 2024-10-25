@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ddcls3eswdxr6" path="res://resources/bodyparts/flesh/leg.tres" id="2_r48l6"]
 
 [node name="FleshRightLeg" instance=ExtResource("1_jtfrh")]
+flat = 10.0
 type = 5
 category = 1
 

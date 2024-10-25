@@ -91,6 +91,7 @@ _data = {
 
 [node name="Skeleton" instance=ExtResource("1_2lhfa")]
 speed = 40.0
+health = 3.0
 
 [node name="Sprite" parent="." index="0"]
 frame = 8

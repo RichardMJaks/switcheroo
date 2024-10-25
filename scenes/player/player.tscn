@@ -460,6 +460,7 @@ stream = ExtResource("16_kk0e4")
 
 [node name="VisionRange" type="PointLight2D" parent="."]
 texture_filter = 1
+scale = Vector2(2, 2)
 blend_mode = 2
 texture = SubResource("GradientTexture2D_kwv5e")
 script = ExtResource("14_fnngd")

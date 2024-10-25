@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7o0bpejyr8bx" path="res://resources/bodyparts/zombie/head.tres" id="2_e21ev"]
 
 [node name="ZombieHead" instance=ExtResource("1_p1u28")]
+multiplier = 1.0
 category = 2
 
 [node name="BodyPart" parent="." index="0"]

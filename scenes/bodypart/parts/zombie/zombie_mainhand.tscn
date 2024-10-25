@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b12sldb12soib" path="res://resources/bodyparts/zombie/hand.tres" id="2_6jrgf"]
 
 [node name="ZombieMainHand" instance=ExtResource("1_g3c3i")]
+flat = 1.0
 type = 2
 category = 2
 

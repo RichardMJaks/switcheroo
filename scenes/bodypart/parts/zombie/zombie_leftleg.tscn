@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b4kyab2ds1fiq" path="res://resources/bodyparts/zombie/leg.tres" id="2_nchgm"]
 
 [node name="ZombieLeftLeg" instance=ExtResource("1_wq5k1")]
+flat = 15.0
 type = 4
 category = 2
 

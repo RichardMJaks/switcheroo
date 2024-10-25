@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dfv4nor81x5mg" path="res://resources/bodyparts/skeleton/torso.tres" id="2_17sje"]
 
 [node name="SkeletonTorso" instance=ExtResource("1_rhf6n")]
+flat = 2.0
 type = 1
 
 [node name="BodyPart" parent="." index="0"]

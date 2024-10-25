@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b73uxg1vt8xhh" path="res://resources/bodyparts/flesh/head.tres" id="2_mk6cr"]
 
 [node name="FleshHead" instance=ExtResource("1_xwi58")]
+flat = 10.0
 category = 1
 
 [node name="BodyPart" parent="." index="0"]
