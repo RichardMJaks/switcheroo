@@ -44,6 +44,7 @@ position = Vector2(288, 250)
 [node name="Skeleton" parent="." instance=ExtResource("2_icwrr")]
 process_mode = 0
 position = Vector2(393, 256)
+health = 3.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)

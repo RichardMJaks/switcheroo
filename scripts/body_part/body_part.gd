@@ -31,6 +31,7 @@ class_name BodyPart
 
 @export var type: Util.BODY_TYPE
 @export var category: Util.BODY_CATEGORY
+@onready var texture: Texture2D = $BodyPart.texture
 var state: Util.BODY_STATE = Util.BODY_STATE.HEALTHY
 
 func _ready() -> void:

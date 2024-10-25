@@ -31,4 +31,5 @@ func create_preview(texture_data: Texture2D) -> TextureRect:
 func _on_stash_consume_button_pressed() -> void:
 	var part = holder.get_children()
 	if part.size() != 0:
-		pass #TODO: Stash Consume
+		SignalBus.body_part_consumed.emit()
+		part[0].queue_free()

@@ -15,105 +15,123 @@ offset_left = 43.0
 offset_top = 8.0
 offset_right = 83.0
 offset_bottom = 48.0
+mouse_filter = 0
 
 [node name="ZombieLeftLeg" parent="." instance=ExtResource("14_ft071")]
 offset_left = 65.0
 offset_top = 67.0
 offset_right = 105.0
 offset_bottom = 107.0
+mouse_filter = 0
 
 [node name="ZombieMainHand" parent="." instance=ExtResource("15_ns3r4")]
 offset_left = 12.0
 offset_top = 38.0
 offset_right = 52.0
 offset_bottom = 78.0
+mouse_filter = 0
 
 [node name="ZombieOffHand" parent="." instance=ExtResource("4_lmbfa")]
 offset_left = 71.0
 offset_top = 36.0
 offset_right = 111.0
 offset_bottom = 76.0
+mouse_filter = 0
 
 [node name="ZombieRightLeg" parent="." instance=ExtResource("17_c036l")]
 offset_left = 23.0
 offset_top = 71.0
 offset_right = 63.0
 offset_bottom = 111.0
+mouse_filter = 0
 
 [node name="ZombieTorso" parent="." instance=ExtResource("18_kkwa6")]
 offset_left = 42.0
 offset_top = 38.0
 offset_right = 82.0
 offset_bottom = 78.0
+mouse_filter = 0
 
 [node name="SkeletonHead" parent="." instance=ExtResource("13_0cdje")]
 offset_left = 213.0
 offset_top = 26.0
 offset_right = 253.0
 offset_bottom = 66.0
+mouse_filter = 0
 
 [node name="SkeletonLeftLeg" parent="." instance=ExtResource("14_ft071")]
 offset_left = 228.0
 offset_top = 85.0
 offset_right = 268.0
 offset_bottom = 125.0
+mouse_filter = 0
 
 [node name="SkeletonMainHand" parent="." instance=ExtResource("15_ns3r4")]
 offset_left = 189.0
 offset_top = 54.0
 offset_right = 229.0
 offset_bottom = 94.0
+mouse_filter = 0
 
 [node name="SkeletonOffHand" parent="." instance=ExtResource("16_854ln")]
 offset_left = 247.0
 offset_top = 57.0
 offset_right = 287.0
 offset_bottom = 97.0
+mouse_filter = 0
 
 [node name="SkeletonRightLeg" parent="." instance=ExtResource("17_c036l")]
 offset_left = 199.0
 offset_top = 85.0
 offset_right = 239.0
 offset_bottom = 125.0
+mouse_filter = 0
 
 [node name="SkeletonTorso" parent="." instance=ExtResource("18_kkwa6")]
 offset_left = 214.0
 offset_top = 57.0
 offset_right = 254.0
 offset_bottom = 97.0
+mouse_filter = 0
 
 [node name="FleshHead" parent="." instance=ExtResource("13_0cdje")]
 offset_left = 345.0
 offset_top = 28.0
 offset_right = 385.0
 offset_bottom = 68.0
+mouse_filter = 0
 
 [node name="FleshLeftLeg" parent="." instance=ExtResource("14_ft071")]
 offset_left = 362.0
 offset_top = 84.0
 offset_right = 402.0
 offset_bottom = 124.0
+mouse_filter = 0
 
 [node name="FleshMainHand" parent="." instance=ExtResource("15_ns3r4")]
 offset_left = 317.0
 offset_top = 61.0
 offset_right = 357.0
 offset_bottom = 101.0
+mouse_filter = 0
 
 [node name="FleshOffHand" parent="." instance=ExtResource("16_854ln")]
 offset_left = 371.0
 offset_top = 57.0
 offset_right = 411.0
 offset_bottom = 97.0
+mouse_filter = 0
 
 [node name="FleshRightLeg" parent="." instance=ExtResource("17_c036l")]
 offset_left = 332.0
 offset_top = 81.0
 offset_right = 372.0
 offset_bottom = 121.0
+mouse_filter = 0
 
 [node name="FleshTorso" parent="." instance=ExtResource("18_kkwa6")]
 offset_left = 346.0
 offset_top = 58.0
 offset_right = 386.0
 offset_bottom = 98.0
+mouse_filter = 0

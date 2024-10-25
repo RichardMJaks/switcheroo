@@ -3,7 +3,7 @@ class_name Enemy
 
 @export var speed: float
 @export var health: float
-@export var type: Util.BODY_CATEGORY
+@export var category: Util.BODY_CATEGORY
 
 @onready var player: Player = Global.player
 
@@ -25,8 +25,8 @@ func _die() -> void:
 	_drop_part()
 
 func _drop_part() -> BodyPartPickable:
-	if not randi_range(1, 10) == 10:
-		return null
+	#dif not randi_range(1, 10) == 10:
+		#return null
 	
 	#var part_or_null: PackedScene =\
 		#BPPreloads.bodyparts_droppable[type][
@@ -39,8 +39,8 @@ func _drop_part() -> BodyPartPickable:
 	
 	var part: BodyPartPickable = BPPreloads.droppable_bodypart.instantiate()
 	part.global_position = global_position
-	part.category = type
-	part.type = Util.BODY_TYPE.keys().pick_random()
+	part.category = category
+	part.type = randi_range(0, 5)
 	get_tree().current_scene.add_child(part)
 	
 	return part

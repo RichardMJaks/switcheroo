@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://25cv40vylqx8"]
 
 [ext_resource type="Script" path="res://scripts/body_part/body_part.gd" id="1_56fqx"]
-[ext_resource type="Texture2D" uid="uid://cbjkylx6dexoh" path="res://art/kehaosad.png" id="2_jqmbr"]
+[ext_resource type="Texture2D" uid="uid://bn57pynlj7nho" path="res://art/kehaosad.png" id="2_jqmbr"]
 
 [node name="BodyPart" type="Control"]
 layout_mode = 3
@@ -16,6 +16,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_56fqx")
 
 [node name="BodyPart" type="TextureRect" parent="."]

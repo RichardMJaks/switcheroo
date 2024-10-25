@@ -4,15 +4,7 @@ class_name BodyPartPickable
 @export var category: Util.BODY_CATEGORY
 @export var type: Util.BODY_TYPE
 var in_pickup_area: bool = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	
 
 #TODO: Pickupable shit
 func _unhandled_key_input(event: InputEvent) -> void:
@@ -20,9 +12,9 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		return
 	
 	if event.is_action_pressed("a_pickup"):
-		# Create bodypart object
-		# add it to bodypart menu slot
-		# open up bodypart menu
+		print("Cat: %s, type: %s" % [category, type])
+		var part = BPPreloads.bodyparts_ui[category][type].instantiate()
+		SignalBus.body_part_picked_up.emit(part)
 		print_debug("Pickup")
 		pass
 	
