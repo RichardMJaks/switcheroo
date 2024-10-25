@@ -1,39 +1,28 @@
-[gd_scene load_steps=19 format=3 uid="uid://cadg5h45dg73r"]
+[gd_scene load_steps=8 format=3 uid="uid://cadg5h45dg73r"]
 
-[ext_resource type="PackedScene" uid="uid://bu80cpf4wc2qp" path="res://scenes/bodypart/parts/zombie/zombie_head.tscn" id="1_1lpmt"]
-[ext_resource type="PackedScene" uid="uid://rdums3wigunx" path="res://scenes/bodypart/parts/zombie/zombie_leftleg.tscn" id="2_cknxj"]
-[ext_resource type="PackedScene" uid="uid://doydeub0gv5a6" path="res://scenes/bodypart/parts/zombie/zombie_mainhand.tscn" id="3_i4ar4"]
 [ext_resource type="PackedScene" uid="uid://cn2ql6g44wo1g" path="res://scenes/bodypart/parts/zombie/zombie_offhand.tscn" id="4_lmbfa"]
-[ext_resource type="PackedScene" uid="uid://b2q57fs03hiul" path="res://scenes/bodypart/parts/zombie/zombie_rightleg.tscn" id="5_dggsj"]
-[ext_resource type="PackedScene" uid="uid://d0psgc1fvtbuk" path="res://scenes/bodypart/parts/zombie/zombie_torso.tscn" id="6_w0fx7"]
-[ext_resource type="PackedScene" uid="uid://bu80cpf4wc2qp" path="res://scenes/bodypart/parts/skeleton/skeleton_head.tscn" id="7_pleht"]
-[ext_resource type="PackedScene" uid="uid://rdums3wigunx" path="res://scenes/bodypart/parts/skeleton/skeleton_leftleg.tscn" id="8_e6hv2"]
-[ext_resource type="PackedScene" uid="uid://doydeub0gv5a6" path="res://scenes/bodypart/parts/skeleton/skeleton_mainhand.tscn" id="9_hg6p4"]
-[ext_resource type="PackedScene" uid="uid://cqgdyxpsxgj2o" path="res://scenes/bodypart/parts/skeleton/skeleton_offhand.tscn" id="10_j87uq"]
-[ext_resource type="PackedScene" uid="uid://b2q57fs03hiul" path="res://scenes/bodypart/parts/skeleton/skeleton_rightleg.tscn" id="11_7ixje"]
-[ext_resource type="PackedScene" uid="uid://d0psgc1fvtbuk" path="res://scenes/bodypart/parts/skeleton/skeleton_torso.tscn" id="12_ncrfi"]
-[ext_resource type="PackedScene" uid="uid://bu80cpf4wc2qp" path="res://scenes/bodypart/parts/flesh/flesh_head.tscn" id="13_0cdje"]
-[ext_resource type="PackedScene" uid="uid://rdums3wigunx" path="res://scenes/bodypart/parts/flesh/flesh_leftleg.tscn" id="14_ft071"]
-[ext_resource type="PackedScene" uid="uid://doydeub0gv5a6" path="res://scenes/bodypart/parts/flesh/flesh_mainhand.tscn" id="15_ns3r4"]
-[ext_resource type="PackedScene" uid="uid://cqgdyxpsxgj2o" path="res://scenes/bodypart/parts/flesh/flesh_offhand.tscn" id="16_854ln"]
-[ext_resource type="PackedScene" uid="uid://b2q57fs03hiul" path="res://scenes/bodypart/parts/flesh/flesh_rightleg.tscn" id="17_c036l"]
-[ext_resource type="PackedScene" uid="uid://d0psgc1fvtbuk" path="res://scenes/bodypart/parts/flesh/flesh_torso.tscn" id="18_kkwa6"]
+[ext_resource type="PackedScene" uid="uid://bu80cpf4wc2qp" path="res://scenes/bodypart/parts/zombie/zombie_head.tscn" id="13_0cdje"]
+[ext_resource type="PackedScene" uid="uid://rdums3wigunx" path="res://scenes/bodypart/parts/zombie/zombie_leftleg.tscn" id="14_ft071"]
+[ext_resource type="PackedScene" uid="uid://doydeub0gv5a6" path="res://scenes/bodypart/parts/zombie/zombie_mainhand.tscn" id="15_ns3r4"]
+[ext_resource type="PackedScene" uid="uid://cqgdyxpsxgj2o" path="res://scenes/bodypart/parts/skeleton/skeleton_offhand.tscn" id="16_854ln"]
+[ext_resource type="PackedScene" uid="uid://b2q57fs03hiul" path="res://scenes/bodypart/parts/zombie/zombie_rightleg.tscn" id="17_c036l"]
+[ext_resource type="PackedScene" uid="uid://d0psgc1fvtbuk" path="res://scenes/bodypart/parts/zombie/zombie_torso.tscn" id="18_kkwa6"]
 
 [node name="Debug_parts" type="Node2D"]
 
-[node name="ZombieHead" parent="." instance=ExtResource("1_1lpmt")]
+[node name="ZombieHead" parent="." instance=ExtResource("13_0cdje")]
 offset_left = 43.0
 offset_top = 8.0
 offset_right = 83.0
 offset_bottom = 48.0
 
-[node name="ZombieLeftLeg" parent="." instance=ExtResource("2_cknxj")]
+[node name="ZombieLeftLeg" parent="." instance=ExtResource("14_ft071")]
 offset_left = 65.0
 offset_top = 67.0
 offset_right = 105.0
 offset_bottom = 107.0
 
-[node name="ZombieMainHand" parent="." instance=ExtResource("3_i4ar4")]
+[node name="ZombieMainHand" parent="." instance=ExtResource("15_ns3r4")]
 offset_left = 12.0
 offset_top = 38.0
 offset_right = 52.0
@@ -45,49 +34,49 @@ offset_top = 36.0
 offset_right = 111.0
 offset_bottom = 76.0
 
-[node name="ZombieRightLeg" parent="." instance=ExtResource("5_dggsj")]
+[node name="ZombieRightLeg" parent="." instance=ExtResource("17_c036l")]
 offset_left = 23.0
 offset_top = 71.0
 offset_right = 63.0
 offset_bottom = 111.0
 
-[node name="ZombieTorso" parent="." instance=ExtResource("6_w0fx7")]
+[node name="ZombieTorso" parent="." instance=ExtResource("18_kkwa6")]
 offset_left = 42.0
 offset_top = 38.0
 offset_right = 82.0
 offset_bottom = 78.0
 
-[node name="SkeletonHead" parent="." instance=ExtResource("7_pleht")]
+[node name="SkeletonHead" parent="." instance=ExtResource("13_0cdje")]
 offset_left = 213.0
 offset_top = 26.0
 offset_right = 253.0
 offset_bottom = 66.0
 
-[node name="SkeletonLeftLeg" parent="." instance=ExtResource("8_e6hv2")]
+[node name="SkeletonLeftLeg" parent="." instance=ExtResource("14_ft071")]
 offset_left = 228.0
 offset_top = 85.0
 offset_right = 268.0
 offset_bottom = 125.0
 
-[node name="SkeletonMainHand" parent="." instance=ExtResource("9_hg6p4")]
+[node name="SkeletonMainHand" parent="." instance=ExtResource("15_ns3r4")]
 offset_left = 189.0
 offset_top = 54.0
 offset_right = 229.0
 offset_bottom = 94.0
 
-[node name="SkeletonOffHand" parent="." instance=ExtResource("10_j87uq")]
+[node name="SkeletonOffHand" parent="." instance=ExtResource("16_854ln")]
 offset_left = 247.0
 offset_top = 57.0
 offset_right = 287.0
 offset_bottom = 97.0
 
-[node name="SkeletonRightLeg" parent="." instance=ExtResource("11_7ixje")]
+[node name="SkeletonRightLeg" parent="." instance=ExtResource("17_c036l")]
 offset_left = 199.0
 offset_top = 85.0
 offset_right = 239.0
 offset_bottom = 125.0
 
-[node name="SkeletonTorso" parent="." instance=ExtResource("12_ncrfi")]
+[node name="SkeletonTorso" parent="." instance=ExtResource("18_kkwa6")]
 offset_left = 214.0
 offset_top = 57.0
 offset_right = 254.0
