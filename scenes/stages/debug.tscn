@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://q4ljl267011s"]
+[gd_scene load_steps=9 format=4 uid="uid://q4ljl267011s"]
 
 [ext_resource type="PackedScene" uid="uid://bpj2w5vkghrvv" path="res://scenes/player/player.tscn" id="1_cx2am"]
 [ext_resource type="Texture2D" uid="uid://dy6e52dd2x2pq" path="res://art/necromancy map.png" id="1_xrjbw"]
 [ext_resource type="PackedScene" uid="uid://dfpiivi2lnsep" path="res://scenes/enemy/e_skeleton/skeleton.tscn" id="2_icwrr"]
 [ext_resource type="Script" path="res://scripts/utilities/smooth_camera/smooth_camera.gd" id="2_rionj"]
 [ext_resource type="PackedScene" uid="uid://divnta64wru2b" path="res://scenes/ui/body_part_menu/bodypartmenu.tscn" id="5_fxkip"]
+[ext_resource type="PackedScene" uid="uid://1titd7r124s7" path="res://scenes/bodypart_pickable/body_part_pickable.tscn" id="6_eg2kg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kloxr"]
 texture = ExtResource("1_xrjbw")
@@ -52,3 +53,84 @@ color = Color(0, 0, 0, 1)
 [node name="BodyPartMenu" parent="Menus" instance=ExtResource("5_fxkip")]
 process_mode = 3
 visible = false
+
+[node name="BodyPartPickable" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(413, 422)
+
+[node name="BodyPartPickable2" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(430, 423)
+type = 1
+
+[node name="BodyPartPickable3" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(447, 424)
+type = 2
+
+[node name="BodyPartPickable4" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(467, 425)
+type = 3
+
+[node name="BodyPartPickable5" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(488, 426)
+type = 4
+
+[node name="BodyPartPickable6" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(504, 426)
+type = 5
+
+[node name="BodyPartPickable7" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(412, 448)
+category = 1
+
+[node name="BodyPartPickable8" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(431, 448)
+category = 1
+type = 1
+
+[node name="BodyPartPickable9" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(446, 448)
+category = 1
+type = 2
+
+[node name="BodyPartPickable10" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(468, 448)
+category = 1
+type = 3
+
+[node name="BodyPartPickable11" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(490, 449)
+category = 1
+type = 4
+
+[node name="BodyPartPickable12" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(506, 448)
+category = 1
+type = 5
+
+[node name="BodyPartPickable13" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(411, 471)
+category = 2
+
+[node name="BodyPartPickable14" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(432, 470)
+category = 2
+type = 1
+
+[node name="BodyPartPickable15" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(445, 470)
+category = 2
+type = 2
+
+[node name="BodyPartPickable16" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(468, 469)
+category = 2
+type = 3
+
+[node name="BodyPartPickable17" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(492, 468)
+category = 2
+type = 4
+
+[node name="BodyPartPickable18" parent="." instance=ExtResource("6_eg2kg")]
+position = Vector2(505, 469)
+category = 2
+type = 5

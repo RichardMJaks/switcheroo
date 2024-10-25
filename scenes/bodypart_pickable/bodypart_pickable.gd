@@ -1,8 +1,8 @@
 extends Sprite2D
 class_name BodyPartPickable
 
-var category: Util.BODY_CATEGORY
-var type: Util.BODY_TYPE
+@export var category: Util.BODY_CATEGORY
+@export var type: Util.BODY_TYPE
 var in_pickup_area: bool = false
 
 # Called when the node enters the scene tree for the first time.

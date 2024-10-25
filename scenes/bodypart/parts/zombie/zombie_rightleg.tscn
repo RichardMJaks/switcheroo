@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2q57fs03hiul"]
+
+[ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_ssfkf"]
+[ext_resource type="Texture2D" uid="uid://vixksx5gccpl" path="res://resources/bodyparts/zombie/zombie_leg.tres" id="2_24x5x"]
+
+[node name="ZombieRightLeg" instance=ExtResource("1_ssfkf")]
+type = 5
+category = 2
+
+[node name="BodyPart" parent="." index="0"]
+texture = ExtResource("2_24x5x")
+flip_h = true

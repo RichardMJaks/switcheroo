@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2q57fs03hiul"]
+
+[ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_jtfrh"]
+[ext_resource type="Texture2D" uid="uid://vixksx5gccpl" path="res://resources/bodyparts/flesh/flesh_leg.tres" id="2_r48l6"]
+
+[node name="FleshRightLeg" instance=ExtResource("1_jtfrh")]
+type = 5
+category = 1
+
+[node name="BodyPart" parent="." index="0"]
+texture = ExtResource("2_r48l6")
+flip_h = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://divnta64wru2b"]
+[gd_scene load_steps=8 format=3 uid="uid://divnta64wru2b"]
 
 [ext_resource type="Script" path="res://scenes/ui/body_part_menu/bodypartmenu.gd" id="1_jpax2"]
 [ext_resource type="Texture2D" uid="uid://cws7mnk65m7o1" path="res://art/book.png" id="1_wfpjc"]
@@ -6,14 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d275u6f5gikmo" path="res://scenes/ui/body_part_menu/part_slot.tscn" id="2_hp55f"]
 [ext_resource type="Script" path="res://scenes/ui/body_part_menu/slot_manager.gd" id="3_5jf1b"]
 [ext_resource type="Script" path="res://scenes/ui/body_part_menu/part_slot_misc.gd" id="4_mity6"]
-[ext_resource type="Script" path="res://scripts/body_part/body_part.gd" id="5_87i6i"]
-
-[sub_resource type="Gradient" id="Gradient_fmwou"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_k808i"]
-gradient = SubResource("Gradient_fmwou")
-width = 30
-height = 30
+[ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="7_m3q3o"]
 
 [node name="BodyPartMenu" type="Control"]
 layout_mode = 3
@@ -159,22 +152,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
-[node name="Head" type="TextureRect" parent="PanelContainer/CenterContainer/Book/Panel/Holder"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 15.0
-offset_bottom = 15.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_k808i")
-script = ExtResource("5_87i6i")
-flat = 20.0
+[node name="Head" parent="PanelContainer/CenterContainer/Book/Panel/Holder" instance=ExtResource("7_m3q3o")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="ConsumeButton" type="Button" parent="PanelContainer/CenterContainer/Book"]
 layout_mode = 0

@@ -1,4 +1,4 @@
-extends TextureRect
+extends Control
 class_name BodyPart
 
 @export var flat_min = 0
@@ -30,6 +30,7 @@ class_name BodyPart
 		return 0
 
 @export var type: Util.BODY_TYPE
+@export var category: Util.BODY_CATEGORY
 var state: Util.BODY_STATE = Util.BODY_STATE.HEALTHY
 
 func _ready() -> void:

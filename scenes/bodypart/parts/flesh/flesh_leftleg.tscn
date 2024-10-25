@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://rdums3wigunx"]
+
+[ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_6v305"]
+[ext_resource type="Texture2D" uid="uid://vixksx5gccpl" path="res://resources/bodyparts/flesh/flesh_leg.tres" id="2_nw5ja"]
+
+[node name="FleshLeftLeg" instance=ExtResource("1_6v305")]
+type = 4
+category = 1
+
+[node name="BodyPart" parent="." index="0"]
+texture = ExtResource("2_nw5ja")

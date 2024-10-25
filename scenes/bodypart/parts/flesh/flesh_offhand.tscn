@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqgdyxpsxgj2o"]
+
+[ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_uyaf0"]
+[ext_resource type="Texture2D" uid="uid://bd6ihwbs35glw" path="res://resources/bodyparts/flesh/flesh_hand.tres" id="2_hiefu"]
+
+[node name="FleshOffHand" instance=ExtResource("1_uyaf0")]
+type = 3
+category = 1
+
+[node name="BodyPart" parent="." index="0"]
+texture = ExtResource("2_hiefu")
