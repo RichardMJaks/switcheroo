@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://q4ljl267011s"]
+[gd_scene load_steps=8 format=4 uid="uid://q4ljl267011s"]
 
 [ext_resource type="PackedScene" uid="uid://bpj2w5vkghrvv" path="res://scenes/player/player.tscn" id="1_cx2am"]
 [ext_resource type="Texture2D" uid="uid://dy6e52dd2x2pq" path="res://art/necromancy map.png" id="1_xrjbw"]
-[ext_resource type="PackedScene" uid="uid://dfpiivi2lnsep" path="res://scenes/enemy/e_skeleton/skeleton.tscn" id="2_icwrr"]
 [ext_resource type="Script" path="res://scripts/utilities/smooth_camera/smooth_camera.gd" id="2_rionj"]
 [ext_resource type="PackedScene" uid="uid://divnta64wru2b" path="res://scenes/ui/body_part_menu/bodypartmenu.tscn" id="5_fxkip"]
-[ext_resource type="PackedScene" uid="uid://1titd7r124s7" path="res://scenes/bodypart_pickable/body_part_pickable.tscn" id="6_eg2kg"]
+[ext_resource type="PackedScene" uid="uid://d00rxh20g6ex6" path="res://scenes/enemy/e_zombie/zombie.tscn" id="7_m01s2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kloxr"]
 texture = ExtResource("1_xrjbw")
@@ -41,11 +40,6 @@ follow_speed = 20.0
 [node name="Player" parent="." instance=ExtResource("1_cx2am")]
 position = Vector2(288, 250)
 
-[node name="Skeleton" parent="." instance=ExtResource("2_icwrr")]
-process_mode = 0
-position = Vector2(393, 256)
-health = 3.0
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0, 0, 0, 1)
 
@@ -55,83 +49,9 @@ color = Color(0, 0, 0, 1)
 process_mode = 3
 visible = false
 
-[node name="BodyPartPickable" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(413, 422)
+[node name="Zombie" parent="." instance=ExtResource("7_m01s2")]
+position = Vector2(376, 323)
+collision_layer = 1
+collision_mask = 1
 
-[node name="BodyPartPickable2" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(430, 423)
-type = 1
-
-[node name="BodyPartPickable3" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(447, 424)
-type = 2
-
-[node name="BodyPartPickable4" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(467, 425)
-type = 3
-
-[node name="BodyPartPickable5" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(488, 426)
-type = 4
-
-[node name="BodyPartPickable6" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(504, 426)
-type = 5
-
-[node name="BodyPartPickable7" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(412, 448)
-category = 1
-
-[node name="BodyPartPickable8" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(431, 448)
-category = 1
-type = 1
-
-[node name="BodyPartPickable9" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(446, 448)
-category = 1
-type = 2
-
-[node name="BodyPartPickable10" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(468, 448)
-category = 1
-type = 3
-
-[node name="BodyPartPickable11" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(490, 449)
-category = 1
-type = 4
-
-[node name="BodyPartPickable12" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(506, 448)
-category = 1
-type = 5
-
-[node name="BodyPartPickable13" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(411, 471)
-category = 2
-
-[node name="BodyPartPickable14" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(432, 470)
-category = 2
-type = 1
-
-[node name="BodyPartPickable15" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(445, 470)
-category = 2
-type = 2
-
-[node name="BodyPartPickable16" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(468, 469)
-category = 2
-type = 3
-
-[node name="BodyPartPickable17" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(492, 468)
-category = 2
-type = 4
-
-[node name="BodyPartPickable18" parent="." instance=ExtResource("6_eg2kg")]
-position = Vector2(505, 469)
-category = 2
-type = 5
+[node name="HUD" type="CanvasLayer" parent="."]

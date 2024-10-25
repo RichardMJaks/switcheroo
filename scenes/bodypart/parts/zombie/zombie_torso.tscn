@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0psgc1fvtbuk"]
 
 [ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_gf4ap"]
-[ext_resource type="Texture2D" uid="uid://cak174ffv7dr3" path="res://resources/bodyparts/zombie/zombie_torso.tres" id="2_57cwk"]
+[ext_resource type="Texture2D" uid="uid://b6ys3tba8v4oa" path="res://resources/bodyparts/zombie/torso.tres" id="2_57cwk"]
 
 [node name="ZombieTorso" instance=ExtResource("1_gf4ap")]
 type = 1

@@ -16,12 +16,13 @@ func _unhandled_key_input(event: InputEvent) -> void:
 		var part = BPPreloads.bodyparts_ui[category][type].instantiate()
 		SignalBus.body_part_picked_up.emit(part)
 		print_debug("Pickup")
-		pass
+		queue_free()
 	
 	if event.is_action_pressed("a_consume"):
 		# destroy this
 		# add mana
-		print_debug("Consume")
+		SignalBus.body_part_consumed.emit()
+		queue_free()
 		pass
 
 func _on_arrive_in_pickup_area(area: Area2D) -> void:

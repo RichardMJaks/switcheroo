@@ -75,7 +75,16 @@ var dash_cd: float:
 
 var current_health: int = max_hp
 
+var _base_mana: int = 5
+var mana: int = _base_mana
 
+func _ready() -> void:
+	SignalBus.body_part_consumed.connect(_add_mana)
 
+func _add_mana() -> void:
+	if mana < _base_mana:
+		mana += 1
 
-#TODO: Mana implementation
+func _process(delta: float) -> void:
+	if current_health <= 0:
+		SignalBus.game_over.emit()

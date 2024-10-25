@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b50s6gwhjs7nd"]
+
+[ext_resource type="Script" path="res://scripts/enemy_director.gd" id="1_ct8r3"]
+[ext_resource type="PackedScene" uid="uid://crojk2yoopdsh" path="res://scenes/enemy_director/sub_director.tscn" id="2_mf3nd"]
+
+[node name="EnemyDirector" type="Node2D"]
+script = ExtResource("1_ct8r3")
+sub_director = ExtResource("2_mf3nd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 16.0
+autostart = true
+
+[node name="SubDirector" parent="." instance=ExtResource("2_mf3nd")]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

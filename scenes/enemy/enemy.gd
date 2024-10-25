@@ -22,11 +22,13 @@ func _process(_delta: float) -> void:
 func _die() -> void:
 	fsm.force_change_state("dying")
 	dead = true
+	$CollisionShape2D.disabled = true
+	$Hurtbox/Collider.disabled = true
 	_drop_part()
 
 func _drop_part() -> BodyPartPickable:
-	#dif not randi_range(1, 10) == 10:
-		#return null
+	if not randi_range(1, 10) == 10:
+		return null
 	
 	#var part_or_null: PackedScene =\
 		#BPPreloads.bodyparts_droppable[type][
@@ -40,12 +42,14 @@ func _drop_part() -> BodyPartPickable:
 	var part: BodyPartPickable = BPPreloads.droppable_bodypart.instantiate()
 	part.global_position = global_position
 	part.category = category
+	#HACK: Bit hacky for enum values
 	part.type = randi_range(0, 5)
 	get_tree().current_scene.add_child(part)
 	
 	return part
 
 func take_damage(amount: int, dir: Vector2) -> void:
+	$HitSound.play()
 	if health <= amount:
 		health -= amount
 		return

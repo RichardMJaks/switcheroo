@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bu80cpf4wc2qp"]
 
 [ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_xwi58"]
-[ext_resource type="Texture2D" uid="uid://dtfcpicbnmevm" path="res://resources/bodyparts/skeleton/skeleton_head.tres" id="2_gg54c"]
+[ext_resource type="Texture2D" uid="uid://k7ymoj3ly1uk" path="res://resources/bodyparts/skeleton/head.tres" id="2_gg54c"]
 
 [node name="SkeletonHead" instance=ExtResource("1_xwi58")]
 

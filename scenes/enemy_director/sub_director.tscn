@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://crojk2yoopdsh"]
+
+[ext_resource type="Script" path="res://scenes/enemy_director/sub_director.gd" id="1_o1g16"]
+
+[node name="SubDirector" type="Node2D"]
+script = ExtResource("1_o1g16")

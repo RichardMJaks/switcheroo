@@ -1,6 +1,92 @@
-[gd_scene load_steps=2 format=3 uid="uid://wdmflp00cva"]
+[gd_scene load_steps=8 format=3 uid="uid://wdmflp00cva"]
 
 [ext_resource type="PackedScene" uid="uid://djtb4rcvx6luq" path="res://scenes/enemy/enemy.tscn" id="1_eedu5"]
+[ext_resource type="Texture2D" uid="uid://c44lf2dfrtht5" path="res://art/lihamees.png" id="2_7ibgb"]
+
+[sub_resource type="Animation" id="Animation_wamw0"]
+resource_name = "moving"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7, 1.05),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_clmjp"]
+resource_name = "taking_damage"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [13, 12]
+}
+
+[sub_resource type="Animation" id="Animation_demmv"]
+resource_name = "dying"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_ap3xh"]
+resource_name = "attacking"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5eyj"]
+_data = {
+"attacking": SubResource("Animation_ap3xh"),
+"dying": SubResource("Animation_demmv"),
+"moving": SubResource("Animation_wamw0"),
+"taking_damage": SubResource("Animation_clmjp")
+}
 
 [node name="Flesh" instance=ExtResource("1_eedu5")]
-type = 1
+speed = 20.0
+category = 1
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_7ibgb")
+frame = 8
+
+[node name="AnimationPlayer" parent="Sprite" index="0"]
+root_node = NodePath("..")
+libraries = {
+"": SubResource("AnimationLibrary_k5eyj")
+}

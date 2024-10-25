@@ -5,7 +5,7 @@ extends Panel
 func _ready() -> void:
 	SignalBus.body_part_picked_up.connect(_add_body_part)
 
-func _get_drag_data(at_position: Vector2) -> Variant:
+func _get_drag_data(_at_position: Vector2) -> Variant:
 	var part = holder.get_children()
 	if part.size() == 0:
 		return null
@@ -31,5 +31,6 @@ func create_preview(texture_data: Texture2D) -> TextureRect:
 func _on_stash_consume_button_pressed() -> void:
 	var part = holder.get_children()
 	if part.size() != 0:
+		$"../../../../Click".play()
 		SignalBus.body_part_consumed.emit()
 		part[0].queue_free()

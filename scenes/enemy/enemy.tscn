@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://djtb4rcvx6luq"]
+[gd_scene load_steps=21 format=3 uid="uid://djtb4rcvx6luq"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_6umng"]
 [ext_resource type="Script" path="res://scripts/utilities/state_machine/enemy/enemy_fsm.gd" id="1_bcfqb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scenes/enemy/states/dying.gd" id="8_ehobb"]
 [ext_resource type="Script" path="res://scripts/utilities/input_handler/enemy/enemy_input_handler.gd" id="9_lirj2"]
 [ext_resource type="Script" path="res://scenes/enemy/follower_ai.gd" id="10_peasc"]
+[ext_resource type="AudioStream" uid="uid://bdvbr2kxi60hh" path="res://sfx/hitenemy1.wav" id="13_ivv5q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lm8ed"]
 size = Vector2(10, 19)
@@ -71,8 +72,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7yy7m"]
 size = Vector2(36, 17)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_82pxm"]
+radius = 5.0
+
 [node name="Enemy" type="CharacterBody2D"]
 process_mode = 1
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_6umng")
 health = 10.0
 
@@ -144,14 +150,17 @@ animation_name = "moving"
 [node name="attacking" type="Node" parent="FSM" node_paths=PackedStringArray("moving")]
 script = ExtResource("6_p5el5")
 moving = NodePath("../moving")
+attack_animations = Array[String](["attacking"])
 
 [node name="taking_damage" type="Node" parent="FSM" node_paths=PackedStringArray("moving")]
 script = ExtResource("7_dal1h")
 moving = NodePath("../moving")
 knockback_amount = 25.0
+animation_name = "taking_damage"
 
 [node name="dying" type="Node" parent="FSM"]
 script = ExtResource("8_ehobb")
+animation_name = "dying"
 
 [node name="InputHandler" type="Node" parent="." node_paths=PackedStringArray("ai")]
 script = ExtResource("9_lirj2")
@@ -160,6 +169,13 @@ ai = NodePath("AI")
 [node name="AI" type="Node" parent="InputHandler" node_paths=PackedStringArray("character")]
 script = ExtResource("10_peasc")
 character = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_82pxm")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_ivv5q")
+volume_db = -6.875
 
 [connection signal="area_entered" from="AttackRange" to="InputHandler/AI" method="_on_player_enters_attack_range"]
 [connection signal="area_exited" from="AttackRange" to="InputHandler/AI" method="_on_player_leaves_attack_range"]

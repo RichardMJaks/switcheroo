@@ -10,7 +10,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
-func take_damage(amount: int, dir: Vector2) -> void:
+func take_damage(amount: int, _dir: Vector2) -> void:
 	SignalBus.shake_camera.emit()
 	StatsUtil.current_health -= amount
 	

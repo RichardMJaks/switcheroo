@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://divnta64wru2b"]
+[gd_scene load_steps=8 format=3 uid="uid://divnta64wru2b"]
 
 [ext_resource type="Script" path="res://scenes/ui/body_part_menu/bodypartmenu.gd" id="1_jpax2"]
 [ext_resource type="Texture2D" uid="uid://cws7mnk65m7o1" path="res://art/book.png" id="1_wfpjc"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d275u6f5gikmo" path="res://scenes/ui/body_part_menu/part_slot.tscn" id="2_hp55f"]
 [ext_resource type="Script" path="res://scenes/ui/body_part_menu/slot_manager.gd" id="3_5jf1b"]
 [ext_resource type="Script" path="res://scenes/ui/body_part_menu/part_slot_misc.gd" id="4_mity6"]
+[ext_resource type="AudioStream" uid="uid://dux4kpkcfu3am" path="res://sfx/menuselect1.wav" id="7_7rt7j"]
 
 [node name="BodyPartMenu" type="Control"]
 layout_mode = 3
@@ -176,6 +177,9 @@ offset_top = 453.0
 offset_right = 621.0
 offset_bottom = 484.0
 text = "NECROMANCE"
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7rt7j")
 
 [connection signal="pressed" from="PanelContainer/CenterContainer/Book/ConsumeButton" to="PanelContainer/CenterContainer/Book" method="_on_consume_button_pressed"]
 [connection signal="pressed" from="PanelContainer/CenterContainer/Book/StashConsumeButton" to="PanelContainer/CenterContainer/Book/PartSlotMisc" method="_on_stash_consume_button_pressed"]

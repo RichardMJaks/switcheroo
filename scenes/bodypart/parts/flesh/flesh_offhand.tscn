@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cqgdyxpsxgj2o"]
 
 [ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_uyaf0"]
-[ext_resource type="Texture2D" uid="uid://bd6ihwbs35glw" path="res://resources/bodyparts/flesh/flesh_hand.tres" id="2_hiefu"]
+[ext_resource type="Texture2D" uid="uid://c7t4rk2ffm0pb" path="res://resources/bodyparts/flesh/hand.tres" id="2_hiefu"]
 
 [node name="FleshOffHand" instance=ExtResource("1_uyaf0")]
 type = 3

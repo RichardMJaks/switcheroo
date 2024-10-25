@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d0psgc1fvtbuk"]
 
 [ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_eglt6"]
-[ext_resource type="Texture2D" uid="uid://cak174ffv7dr3" path="res://resources/bodyparts/flesh/flesh_torso.tres" id="2_4rjwf"]
+[ext_resource type="Texture2D" uid="uid://5oiakil8u217" path="res://resources/bodyparts/flesh/torso.tres" id="2_4rjwf"]
 
 [node name="FleshTorso" instance=ExtResource("1_eglt6")]
 type = 1

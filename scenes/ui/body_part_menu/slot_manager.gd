@@ -23,9 +23,15 @@ func set_new_active(slot: BPSlot) -> void:
 
 func _on_consume_button_pressed() -> void:
 	if current_active:
-		pass #TODO: Consuming
+		var part = current_active.holder.get_child(0)
+		if part:
+			$"../../../Click".play()
+			part.queue_free()
+			SignalBus.body_part_consumed.emit()
 
 
 func _on_necromance_button_pressed() -> void:
-	if current_active:
-		pass #TODO: Necromancing
+	if StatsUtil.mana >= 5:
+		$"../../../Click".play()
+		StatsUtil.mana = 0
+		StatsUtil.current_health = StatsUtil.max_hp

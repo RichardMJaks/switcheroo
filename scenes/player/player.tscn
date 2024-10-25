@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bpj2w5vkghrvv"]
+[gd_scene load_steps=37 format=3 uid="uid://bpj2w5vkghrvv"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_xb55a"]
 [ext_resource type="Script" path="res://scripts/utilities/state_machine/player/player_state_machine.gd" id="2_0qv4a"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" path="res://scenes/player/states/dash.gd" id="8_eopym"]
 [ext_resource type="Script" path="res://scripts/utilities/audio_player/audio_player.gd" id="12_eqx8t"]
 [ext_resource type="Script" path="res://scenes/player/vision_range.gd" id="14_fnngd"]
+[ext_resource type="AudioStream" uid="uid://crbw2dwn1rla7" path="res://sfx/attack1.wav" id="14_t3jxa"]
+[ext_resource type="AudioStream" uid="uid://b4j6phocmvgtw" path="res://sfx/attack2.wav" id="15_i8vns"]
+[ext_resource type="AudioStream" uid="uid://dg7045j4fsefe" path="res://sfx/attack3.wav" id="16_kk0e4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bhrke"]
 size = Vector2(8, 10)
@@ -123,6 +126,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [14, 15, 16]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AudioPlayer/attack1:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_r4l2m"]
 resource_name = "attack2"
@@ -139,6 +154,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [17, 18]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AudioPlayer/attack2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_di432"]
 resource_name = "attack3"
@@ -154,6 +181,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [19, 20]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AudioPlayer/attack3:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_a5ovd"]
@@ -190,8 +229,48 @@ tracks/0/keys = {
 "values": [7, 8, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_wkauc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AudioPlayer/attack1:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AudioPlayer/attack2:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%AudioPlayer/attack3:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ekfjl"]
 _data = {
+"RESET": SubResource("Animation_wkauc"),
 "attack1": SubResource("Animation_p80sc"),
 "attack2": SubResource("Animation_r4l2m"),
 "attack3": SubResource("Animation_di432"),
@@ -210,8 +289,13 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfkyp"]
+size = Vector2(11, 21)
+
 [node name="Player" type="CharacterBody2D"]
 process_mode = 1
+z_index = 1
+z_as_relative = false
 script = ExtResource("1_xb55a")
 
 [node name="Hurtbox" type="Area2D" parent="."]
@@ -311,18 +395,17 @@ unique_name_in_owner = true
 texture = ExtResource("4_ypow4")
 hframes = 7
 vframes = 3
-frame = 16
+frame = 19
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 libraries = {
 "": SubResource("AnimationLibrary_ekfjl")
 }
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "body_parts_handler", "initial_state", "input_handler", "animation_player")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "initial_state", "input_handler", "animation_player")]
 unique_name_in_owner = true
 script = ExtResource("2_0qv4a")
 player = NodePath("..")
-body_parts_handler = NodePath("")
 initial_state = NodePath("idle")
 input_handler = NodePath("../InputHandler")
 animation_player = NodePath("../Sprite/AnimationPlayer")
@@ -366,8 +449,21 @@ script = ExtResource("3_vkd3c")
 unique_name_in_owner = true
 script = ExtResource("12_eqx8t")
 
+[node name="attack1" type="AudioStreamPlayer" parent="AudioPlayer"]
+stream = ExtResource("14_t3jxa")
+
+[node name="attack2" type="AudioStreamPlayer" parent="AudioPlayer"]
+stream = ExtResource("15_i8vns")
+
+[node name="attack3" type="AudioStreamPlayer" parent="AudioPlayer"]
+stream = ExtResource("16_kk0e4")
+
 [node name="VisionRange" type="PointLight2D" parent="."]
 texture_filter = 1
 blend_mode = 2
 texture = SubResource("GradientTexture2D_kwv5e")
 script = ExtResource("14_fnngd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -0.5)
+shape = SubResource("RectangleShape2D_tfkyp")

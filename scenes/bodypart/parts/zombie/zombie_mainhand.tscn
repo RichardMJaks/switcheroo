@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://doydeub0gv5a6"]
 
 [ext_resource type="PackedScene" uid="uid://25cv40vylqx8" path="res://scenes/bodypart/bodypart.tscn" id="1_g3c3i"]
-[ext_resource type="Texture2D" uid="uid://bd6ihwbs35glw" path="res://resources/bodyparts/zombie/zombie_hand.tres" id="2_6jrgf"]
+[ext_resource type="Texture2D" uid="uid://b12sldb12soib" path="res://resources/bodyparts/zombie/hand.tres" id="2_6jrgf"]
 
 [node name="ZombieMainHand" instance=ExtResource("1_g3c3i")]
 type = 2

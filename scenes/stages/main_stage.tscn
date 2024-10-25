@@ -1,0 +1,117 @@
+[gd_scene load_steps=15 format=3 uid="uid://do3matn202ckl"]
+
+[ext_resource type="PackedScene" uid="uid://bpj2w5vkghrvv" path="res://scenes/player/player.tscn" id="1_smdvl"]
+[ext_resource type="Script" path="res://scripts/utilities/smooth_camera/smooth_camera.gd" id="2_ep5kb"]
+[ext_resource type="PackedScene" uid="uid://divnta64wru2b" path="res://scenes/ui/body_part_menu/bodypartmenu.tscn" id="3_xvgv5"]
+[ext_resource type="AudioStream" uid="uid://bmy1sppg1altm" path="res://sfx/music/Backround ambience.ogg" id="4_hbaot"]
+[ext_resource type="Script" path="res://scripts/hp_bar.gd" id="4_rfm1r"]
+[ext_resource type="Script" path="res://scripts/mana_bar.gd" id="5_4aj6x"]
+[ext_resource type="Script" path="res://scenes/stages/gameover.gd" id="5_t2ban"]
+[ext_resource type="AudioStream" uid="uid://b7uubhcsfp6l5" path="res://sfx/music/Main music.ogg" id="5_u0no2"]
+[ext_resource type="PackedScene" uid="uid://wdmflp00cva" path="res://scenes/enemy/e_flesh/flesh.tscn" id="6_u3chk"]
+[ext_resource type="PackedScene" uid="uid://b50s6gwhjs7nd" path="res://scenes/enemy_director/enemy_director.tscn" id="9_amqa4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8l1dq"]
+bg_color = Color(0.262745, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnwfq"]
+bg_color = Color(0.729412, 0.12549, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dphxb"]
+bg_color = Color(0, 0.239975, 0.320933, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m45hl"]
+bg_color = Color(0.405522, 0.643274, 1, 1)
+
+[node name="MainStage" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_smdvl")]
+position = Vector2(519, 297)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(384, 232)
+zoom = Vector2(3, 3)
+script = ExtResource("2_ep5kb")
+follow_speed = 20.0
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+position = Vector2(384, 232)
+color = Color(0, 0, 0, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(384, 232)
+editor_only = true
+
+[node name="Flesh" parent="." instance=ExtResource("6_u3chk")]
+position = Vector2(446, 248)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Menus" type="CanvasLayer" parent="."]
+
+[node name="BodyPartMenu" parent="Menus" instance=ExtResource("3_xvgv5")]
+process_mode = 3
+visible = false
+
+[node name="GameOver" type="Control" parent="Menus"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_t2ban")
+
+[node name="PanelContainer" type="PanelContainer" parent="Menus/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Menus/GameOver/PanelContainer"]
+layout_mode = 2
+text = "Game Over gamer"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="HP" type="ProgressBar" parent="HUD"]
+offset_left = 13.0
+offset_top = 22.0
+offset_right = 172.0
+offset_bottom = 49.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8l1dq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wnwfq")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
+script = ExtResource("4_rfm1r")
+
+[node name="MANA" type="ProgressBar" parent="HUD"]
+offset_left = 951.0
+offset_top = 23.0
+offset_right = 1110.0
+offset_bottom = 50.0
+theme_override_styles/background = SubResource("StyleBoxFlat_dphxb")
+theme_override_styles/fill = SubResource("StyleBoxFlat_m45hl")
+max_value = 5.0
+value = 3.0
+fill_mode = 1
+show_percentage = false
+script = ExtResource("5_4aj6x")
+
+[node name="BGAmbience" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_hbaot")
+autoplay = true
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_u0no2")
+autoplay = true
+
+[node name="EnemyDirector" parent="." instance=ExtResource("9_amqa4")]
